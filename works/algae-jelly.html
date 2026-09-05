@@ -251,15 +251,6 @@
                    pointer-events: none; transition: opacity 0.4s ease; }
     .mobile-menu.open { opacity: 1; pointer-events: all; }
     .mobile-menu a { color: var(--bg); font-family: var(--font-display); font-size: 1.8rem; }
-
-    .edit-banner { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--bg-dark);
-                   color: var(--bg); padding: 0.75rem 1rem; border-radius: 6px; font-size: 0.8rem;
-                   box-shadow: 0 8px 24px rgba(0,0,0,0.25); z-index: 1500; opacity: 0;
-                   transform: translateY(20px); pointer-events: none;
-                   transition: opacity 0.4s ease, transform 0.4s ease; }
-    .edit-banner.show { opacity: 1; transform: translateY(0); pointer-events: all; }
-    .edit-banner code { background: rgba(247,245,239,0.12); padding: 0.1rem 0.4rem; border-radius: 3px;
-                        font-family: ui-monospace, 'SF Mono', Consolas, monospace; }
   </style>
 </head>
 <body class="detail">
@@ -353,10 +344,6 @@
       </figure>
     </section>
   </main>
-  <div class="edit-banner" id="editBanner">
-    Local preview · edit <code>content/*.md</code> and run <code>python build.py</code>
-  </div>
-
   <script>
     const i18n = {
   "en": {
@@ -505,10 +492,6 @@
       reveals.forEach(el => observer.observe(el));
     }
 
-    if (location.search.includes('preview=1')) {
-      document.getElementById('editBanner').classList.add('show');
-      setTimeout(() => document.getElementById('editBanner').classList.remove('show'), 6000);
-    }
   </script>
 </body>
 </html>
