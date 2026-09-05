@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Wenjie Huang — Microalgae industrial biotechnology and art.">
+  <title>Algae · Words — Wenjie Huang</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/cormorant-garamond@5.0.8/index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-sc@5.0.8/index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.8/index.css">
+  <style>
+    :root {
+      --bg: #F7F5EF;
+      --bg-soft: #EDE9E0;
+      --bg-dark: #1A2F22;
+      --text: #1F2E26;
+      --text-muted: #5E6E65;
+      --accent: #4A6B53;
+      --accent-light: #7A9B7F;
+      --coral: #C78D6B;
+      --coral-soft: #E8C9B6;
+      --gold: #B89A6A;
+      --border: rgba(26, 47, 34, 0.12);
+      --font-display: 'Cormorant Garamond', 'Noto Serif SC', 'Songti SC', Georgia, serif;
+      --font-body: 'Inter', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+      --font-serif-zh: 'Noto Serif SC', 'Songti SC', 'STSong', serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: var(--font-body); background: var(--bg); color: var(--text);
+           line-height: 1.7; font-size: 16px; overflow-x: hidden; }
+    h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; margin: 0; line-height: 1.2; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* Nav */
+    nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+          padding: 1.25rem 4vw; display: flex; justify-content: space-between; align-items: center;
+          transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease; }
+    nav.scrolled { background: rgba(247, 245, 239, 0.88); backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--border); }
+    .nav-logo { font-family: var(--font-display); font-size: 1.35rem; letter-spacing: 0.04em;
+                color: var(--bg); transition: color 0.4s ease; }
+    nav.scrolled .nav-logo { color: var(--text); }
+    .nav-links { display: flex; gap: 2.2rem; align-items: center; list-style: none; margin: 0; padding: 0; }
+    .nav-links a { font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase;
+                   color: rgba(247, 245, 239, 0.85); transition: color 0.3s ease; position: relative; }
+    nav.scrolled .nav-links a { color: var(--text-muted); }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px;
+                          background: var(--coral); transition: width 0.3s ease; }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: var(--coral); }
+    .nav-detail { font-size: 0.85rem !important; }
+    .lang-toggle { display: flex; gap: 0.5rem; align-items: center; font-size: 0.8rem;
+                   letter-spacing: 0.04em; color: rgba(247, 245, 239, 0.85); }
+    nav.scrolled .lang-toggle { color: var(--text-muted); }
+    .lang-btn { background: none; border: none; cursor: pointer; font-family: var(--font-body);
+                font-size: 0.8rem; color: inherit; padding: 0.25rem 0.5rem; opacity: 0.55;
+                transition: opacity 0.3s ease; }
+    .lang-btn.active { opacity: 1; font-weight: 500; }
+    .lang-btn:hover { opacity: 1; }
+    .menu-btn { display: none; background: none; border: none; cursor: pointer;
+                flex-direction: column; gap: 5px; padding: 0.5rem; }
+    .menu-btn span { display: block; width: 22px; height: 1.5px; background: var(--bg);
+                     transition: background 0.4s ease; }
+    nav.scrolled .menu-btn span { background: var(--text); }
+
+    /* Hero (homepage) */
+    .hero { position: relative; height: 100vh; min-height: 700px; display: flex; align-items: center;
+            justify-content: center; text-align: center; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: url('/assets/images/algae-words/hero.jpg') center/cover no-repeat;
+               filter: brightness(0.72) saturate(0.9); transform: scale(1.05);
+               animation: slowZoom 24s ease-in-out infinite alternate; }
+    @keyframes slowZoom { from { transform: scale(1.05); } to { transform: scale(1.12); } }
+    .hero-overlay { position: absolute; inset: 0;
+                    background: linear-gradient(180deg, rgba(26,47,34,0.35) 0%, rgba(26,47,34,0.55) 60%, rgba(26,47,34,0.75) 100%); }
+    .hero-content { position: relative; z-index: 2; color: var(--bg); padding: 0 6vw; max-width: 900px; }
+    .hero-content h1 { font-size: clamp(3rem, 10vw, 7rem); letter-spacing: 0.02em; margin-bottom: 0.5rem;
+                       opacity: 0; transform: translateY(30px); animation: fadeUp 1.2s ease forwards 0.3s; }
+    .hero-content .subtitle { font-family: var(--font-display); font-size: clamp(1.2rem, 3vw, 1.8rem);
+                              letter-spacing: 0.12em; opacity: 0; transform: translateY(20px);
+                              animation: fadeUp 1.2s ease forwards 0.6s; }
+    .hero-content .tagline { margin-top: 2rem; font-size: 1.05rem; font-weight: 300; opacity: 0;
+                              transform: translateY(20px); animation: fadeUp 1.2s ease forwards 0.9s; }
+    .hero-line { width: 1px; height: 80px; background: rgba(247,245,239,0.35);
+                 margin: 2.5rem auto 0; opacity: 0; animation: fadeIn 1.5s ease forwards 1.2s; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    section { padding: 8rem 6vw; position: relative; }
+    .section-label { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+                     color: var(--coral); margin-bottom: 1rem; }
+    .section-title { font-size: clamp(2.2rem, 5vw, 3.8rem); color: var(--bg-dark); margin-bottom: 3rem; }
+    .reveal { opacity: 0; transform: translateY(36px);
+              transition: opacity 0.9s ease, transform 0.9s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* About */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items: center; }
+    .about-image { position: relative; overflow: hidden; }
+    .about-image img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/5; }
+    .about-image::after { content: ''; position: absolute; inset: 0; border: 1px solid var(--border);
+                          transform: translate(16px, 16px); pointer-events: none; }
+    .about-text p { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+
+    /* Research */
+    #research { background: var(--bg-soft); }
+    .research-content { max-width: 900px; }
+    .research-content p { font-size: 1.1rem; color: var(--text-muted); }
+    .research-tags { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2.5rem; }
+    .tag { padding: 0.55rem 1.1rem; border: 1px solid var(--border); border-radius: 100px;
+           font-size: 0.8rem; letter-spacing: 0.04em; color: var(--text-muted); }
+
+    /* Artworks (homepage cards) */
+    .artwork-grid { display: grid; grid-template-columns: 1fr; gap: 6rem; margin-top: 4rem; }
+    .artwork-card { position: relative; }
+    .artwork-link { display: grid; grid-template-columns: 1.1fr 1fr; gap: 4vw; align-items: center;
+                    color: inherit; }
+    .artwork-card:nth-child(even) .artwork-link { grid-template-columns: 1fr 1.1fr; }
+    .artwork-card:nth-child(even) .artwork-hero { order: 2; }
+    .artwork-card:nth-child(even) .artwork-meta { order: 1; }
+    .artwork-hero { position: relative; overflow: hidden; aspect-ratio: 4/5; background: var(--bg-soft); }
+    .artwork-hero img { width: 100%; height: 100%; object-fit: cover;
+                        transition: transform 1s ease, filter 0.6s ease; }
+    .artwork-link:hover .artwork-hero img { transform: scale(1.04); filter: brightness(1.04); }
+    .artwork-hover-cue { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: flex-end;
+                         padding: 1.5rem; color: var(--bg); font-size: 0.9rem;
+                         background: linear-gradient(135deg, transparent 50%, rgba(26,47,34,0.65) 100%);
+                         opacity: 0; transition: opacity 0.4s ease; }
+    .artwork-link:hover .artwork-hover-cue { opacity: 1; }
+    .artwork-meta { padding: 1rem 0; }
+    .artwork-title { font-size: clamp(2.2rem, 5vw, 3.6rem); color: var(--bg-dark); margin-bottom: 0.6rem; }
+    .artwork-subtitle { font-family: var(--font-body); font-size: 1rem; color: var(--coral);
+                        letter-spacing: 0.04em; margin-bottom: 2rem; }
+    .artwork-text { color: var(--text-muted); font-size: 1.05rem; max-width: 520px; }
+    .artwork-text p { margin-bottom: 1.2rem; }
+    .artwork-enter { display: inline-block; margin-top: 1.5rem; font-size: 0.95rem;
+                     letter-spacing: 0.05em; padding-bottom: 0.4rem;
+                     border-bottom: 1px solid var(--coral); color: var(--coral);
+                     transition: color 0.3s ease, padding-bottom 0.3s ease; }
+    .artwork-link:hover .artwork-enter { color: var(--bg-dark); border-color: var(--bg-dark); }
+    .artwork-link { border-bottom: none !important; }
+    .artwork-link::after { display: none !important; }
+
+    /* Contact */
+    #contact { background: var(--bg-dark); color: var(--bg); text-align: center; }
+    #contact .section-title { color: var(--bg); }
+    #contact p { color: rgba(247,245,239,0.7); max-width: 600px; margin: 0 auto 2rem; }
+    .contact-email { display: inline-block; font-family: var(--font-display); font-size: 1.6rem;
+                     color: var(--coral-soft); border-bottom: 1px solid var(--coral); padding-bottom: 0.3rem;
+                     transition: color 0.3s ease; }
+    .contact-email:hover { color: var(--coral); }
+
+    footer { padding: 2.5rem 6vw; text-align: center; font-size: 0.8rem;
+             color: var(--text-muted); border-top: 1px solid var(--border); }
+
+    /* ===== Detail-page styles ===== */
+    .detail-page { padding-top: 5rem; }
+
+    .art-hero { height: 92vh; min-height: 640px; position: relative; overflow: hidden; }
+    .art-hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center;
+                   filter: brightness(0.85) saturate(0.95); }
+    .art-hero-overlay { position: absolute; inset: 0;
+                        background: linear-gradient(180deg, rgba(26,47,34,0.05) 0%,
+                                                    rgba(26,47,34,0.45) 75%, rgba(26,47,34,0.85) 100%); }
+    .art-hero-text { position: absolute; left: 6vw; right: 6vw; bottom: 3rem; color: var(--bg); z-index: 2; max-width: 800px; }
+    .art-hero-text .meta { font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase;
+                           color: var(--coral-soft); margin-bottom: 1rem; opacity: 0.9; }
+    .art-hero-text h1 { font-size: clamp(2.6rem, 7vw, 5rem); margin-bottom: 0.6rem; }
+    .art-hero-text .subtitle { font-family: var(--font-body); font-size: 1.1rem; opacity: 0.85; letter-spacing: 0.04em; }
+
+    .breadcrumb { padding: 2rem 6vw 0; font-size: 0.8rem; letter-spacing: 0.08em;
+                  color: var(--text-muted); text-transform: uppercase; }
+    .breadcrumb a { color: var(--coral); transition: color 0.3s ease; }
+    .breadcrumb a:hover { color: var(--bg-dark); }
+
+    .detail-section { padding: 5rem 6vw; max-width: 1200px; margin: 0 auto; }
+    .detail-section.narrow { max-width: 760px; }
+
+    .art-metadata { display: grid; grid-template-columns: 1fr 1fr; gap: 1.8rem 3rem;
+                    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+                    padding: 3rem 0; margin: 0 0 4rem; }
+    .art-metadata .meta-row { display: flex; flex-direction: column; gap: 0.4rem; }
+    .art-metadata .meta-label { font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+                                color: var(--coral); }
+    .art-metadata .meta-value { font-size: 0.98rem; color: var(--text); line-height: 1.55; }
+
+    /* Mixed sections */
+    .section-text { margin: 4rem auto; max-width: 680px; }
+    .section-text p { font-family: var(--font-serif-zh); font-size: 1.15rem; line-height: 1.9;
+                      color: var(--text); margin: 0; }
+    .section-text p:first-of-type::first-letter { font-family: var(--font-display);
+                                                     font-size: 4rem; line-height: 0.85;
+                                                     float: left; padding: 0.45rem 0.7rem 0 0;
+                                                     color: var(--coral); }
+
+    .section-image { margin: 5rem auto; max-width: 1000px; }
+    .section-image img { width: 100%; height: auto; object-fit: cover; }
+    .section-image figcaption { padding: 1rem 0 0; font-size: 0.95rem; color: var(--text-muted);
+                                 line-height: 1.5; opacity: 0.9; }
+
+    .section-grid { margin: 5rem auto; max-width: 1000px;
+                    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; }
+    .section-grid figure { margin: 0; }
+    .section-grid img { width: 100%; height: 100%; object-fit: cover; }
+    .section-grid figcaption { padding: 0.8rem 0 0; font-size: 0.9rem; color: var(--text-muted); }
+
+    .section-video { margin: 5rem auto; max-width: 1000px; }
+    .section-video video { width: 100%; height: auto; display: block; background: var(--bg-soft); }
+    .section-video figcaption { padding: 1rem 0 0; font-size: 0.95rem; color: var(--text-muted);
+                                line-height: 1.5; opacity: 0.9; }
+
+    .statement-block { margin: 2rem auto 5rem; max-width: 760px; }
+    .statement-block p { font-family: var(--font-serif-zh); font-size: 1.25rem; line-height: 1.95;
+                         color: var(--text); }
+
+    .process-block { margin: 4rem auto 0; padding: 2.5rem; background: var(--bg-soft);
+                     border-left: 3px solid var(--coral); max-width: 760px; }
+    .process-block .process-label { font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+                                    color: var(--coral); margin-bottom: 1rem; }
+    .process-block .process-text { font-size: 0.98rem; color: var(--text-muted); line-height: 1.85;
+                                   font-style: italic; }
+
+    .art-nav { margin-top: 6rem; padding: 4rem 6vw; border-top: 1px solid var(--border);
+               display: flex; justify-content: space-between; align-items: center; gap: 2rem;
+               flex-wrap: wrap; max-width: 1200px; margin-left: auto; margin-right: auto; }
+    .art-nav a { display: flex; flex-direction: column; gap: 0.3rem; font-family: var(--font-display);
+                 font-size: 1.3rem; color: var(--bg-dark); transition: color 0.3s ease; max-width: 45%; }
+    .art-nav a:hover { color: var(--coral); }
+    .art-nav a .label { font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.18em;
+                         text-transform: uppercase; color: var(--text-muted); }
+    .art-nav .all-works { font-family: var(--font-body); font-size: 0.85rem; letter-spacing: 0.18em;
+                           text-transform: uppercase; color: var(--coral); }
+    .art-nav .next { text-align: right; align-items: flex-end; }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .menu-btn { display: flex; }
+      .about-grid { grid-template-columns: 1fr; }
+      .artwork-link, .artwork-card:nth-child(even) .artwork-link { grid-template-columns: 1fr; }
+      .artwork-card:nth-child(even) .artwork-hero { order: 1; }
+      .artwork-card:nth-child(even) .artwork-meta { order: 2; }
+      .art-metadata { grid-template-columns: 1fr; gap: 1.2rem; }
+      .section-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      section { padding: 5rem 5vw; }
+      .detail-section { padding: 4rem 5vw; }
+      .art-hero { height: 75vh; min-height: 540px; }
+      .art-nav { flex-direction: column; align-items: flex-start; }
+      .art-nav a { max-width: 100%; }
+      .art-nav .next { text-align: left; align-items: flex-start; }
+      .section-text p:first-of-type::first-letter { font-size: 3rem; }
+    }
+
+    .mobile-menu { position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+                   background: var(--bg-dark); z-index: 999; display: flex; flex-direction: column;
+                   align-items: center; justify-content: center; gap: 2rem; opacity: 0;
+                   pointer-events: none; transition: opacity 0.4s ease; }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu a { color: var(--bg); font-family: var(--font-display); font-size: 1.8rem; }
+
+    .edit-banner { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--bg-dark);
+                   color: var(--bg); padding: 0.75rem 1rem; border-radius: 6px; font-size: 0.8rem;
+                   box-shadow: 0 8px 24px rgba(0,0,0,0.25); z-index: 1500; opacity: 0;
+                   transform: translateY(20px); pointer-events: none;
+                   transition: opacity 0.4s ease, transform 0.4s ease; }
+    .edit-banner.show { opacity: 1; transform: translateY(0); pointer-events: all; }
+    .edit-banner code { background: rgba(247,245,239,0.12); padding: 0.1rem 0.4rem; border-radius: 3px;
+                        font-family: ui-monospace, 'SF Mono', Consolas, monospace; }
+  </style>
+</head>
+<body class="detail">
+
+  <nav id="nav">
+    <a href="/" class="nav-logo" data-i18n="brand">Wenjie Huang</a>
+    <ul class="nav-links">
+        <li><a href="/#artworks" data-i18n="nav_allworks" class="nav-detail">All Works</a></li>
+        <li class="lang-toggle"><button class="lang-btn active" data-lang="en" aria-label="English">EN</button><span>/</span><button class="lang-btn" data-lang="zh" aria-label="中文">中</button></li>
+      </ul>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/" data-i18n="nav_home_back">Home</a>
+    <a href="/#artworks" data-i18n="nav_allworks">All Works</a>
+    <div class="lang-toggle" style="color: var(--bg); margin-top: 1rem;"><button class="lang-btn active" data-lang="en">EN</button><span>/</span><button class="lang-btn" data-lang="zh">中</button></div>
+  </div>
+
+  <main class="detail-page">
+    <p class="breadcrumb">
+      <a href="/" data-i18n="nav_home">Home</a> ·
+      <a href="/#artworks" data-i18n="nav_allworks">All Works</a> ·
+      <span data-i18n="algae-words_title">Algae · Words</span>
+    </p>
+
+    <section class="art-hero">
+      <div class="art-hero-bg" style="background-image: url('/assets/images/algae-words/hero.jpg')"></div>
+      <div class="art-hero-overlay"></div>
+      <div class="art-hero-text">
+        <p class="meta" data-i18n="algae-words_work_meta">2023 — ongoing · Live biological work · agar plate culture · photography and high-resolution scan</p>
+        <h1 data-i18n="algae-words_title">Algae · Words</h1>
+        <p class="subtitle" data-i18n="algae-words_subtitle">Microalgae writing on agar</p>
+      </div>
+    </section>
+
+    <section class="detail-section">
+      <dl class="art-metadata"><div class="meta-row"><dt class="meta-label" data-i18n="algae-words_meta_label_year">Year</dt><dd class="meta-value" data-i18n="algae-words_meta_value_year">2023 — ongoing</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="algae-words_meta_label_medium">Medium</dt><dd class="meta-value" data-i18n="algae-words_meta_value_medium">Live biological work · agar plate culture · photography and high-resolution scan</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="algae-words_meta_label_dimensions">Dimensions</dt><dd class="meta-value" data-i18n="algae-words_meta_value_dimensions">Petri dishes, 9 cm diameter; presented photographs variable (typical 60 × 60 cm)</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="algae-words_meta_label_location">Location</dt><dd class="meta-value" data-i18n="algae-words_meta_value_location">Microbial physiology laboratory, China</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="algae-words_meta_label_materials">Materials</dt><dd class="meta-value" data-i18n="algae-words_meta_value_materials">Selected microalgal strains, BG-11 / f/2 medium, agar, directional LED, controlled CO₂</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="algae-words_meta_label_edition">Edition</dt><dd class="meta-value" data-i18n="algae-words_meta_value_edition">Each vessel is unique (1/1); photographs printed on demand</dd></div></dl>
+    </section>
+
+    <section class="detail-section narrow">
+      <div class="statement-block reveal">
+        <p data-i18n="algae-words_statement">For an algal researcher, a petri dish is routine. But algae have their own language. On agar they grow into characters, landscapes, and sentences. I do not design the characters in advance; I set the conditions—surface concentration, agar texture, light direction—and let the algae decide what to say. The work is a collaboration between my protocol and their will to grow toward light.</p>
+      </div>
+      <div class="process-block reveal">
+        <p class="process-label" data-i18n="algae-words_process_label">Process · Technique</p>
+        <p class="process-text" data-i18n="algae-words_process">Each piece is constructed by adjusting three variables: surface cell concentration, agar heating time (which changes texture from translucent to rice-paper matte), and the position of a single LED. Cultures run for 7–21 days. The photographic record is taken under raking light and color-matched to gallery conditions.</p>
+      </div>
+    </section>
+
+    <section class="detail-section sections-flow">
+      <div class="section-text reveal">
+        <p data-i18n="algae-words_s1">Calligraphy has long used living things as its model—the brush follows the wind, the bamboo, the bird in flight. In this work I turn the relation around. The algae are the brush, and the琼脂 is the paper, and I am only the one who prepares the ink and leaves the room.</p>
+      </div>
+
+      <figure class="section-image reveal">
+        <img src="/assets/images/algae-words/img01.jpg" alt="A petri dish before growth: clear agar, waiting for its first word." loading="lazy">
+        <figcaption data-i18n="algae-words_c1">A petri dish before growth: clear agar, waiting for its first word.</figcaption>
+      </figure>
+
+      <div class="section-text reveal">
+        <p data-i18n="algae-words_s2">The first step is to let the filaments embed themselves in the agar. They do not sit on top; they push inside, spread, and make the gel their substrate. The boundary between organism and surface dissolves.</p>
+      </div>
+
+      <div class="section-grid reveal">
+        <figure>
+          <img src="/assets/images/algae-words/img02.jpg" alt="Filaments entering the gel like ink entering paper." loading="lazy">
+          <figcaption data-i18n="algae-words_c2">Filaments entering the gel like ink entering paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/images/algae-words/img03.jpg" alt="The first spread: a green language learning its own grammar." loading="lazy">
+          <figcaption data-i18n="algae-words_c3">The first spread: a green language learning its own grammar.</figcaption>
+        </figure>
+      </div>
+
+      <div class="section-text reveal">
+        <p data-i18n="algae-words_s3">By controlling the surface concentration, I create areas of density and emptiness. Where the algae are thick, the琼脂 becomes dark green and almost opaque; where they are sparse, the light passes through and the surface stays pale. The contrast is not drawn; it is grown.</p>
+      </div>
+
+      <figure class="section-image reveal">
+        <img src="/assets/images/algae-words/img04.jpg" alt="Controlled density forms a topography of presence and absence." loading="lazy">
+        <figcaption data-i18n="algae-words_c4">Controlled density forms a topography of presence and absence.</figcaption>
+      </figure>
+
+      <div class="section-text reveal">
+        <p data-i18n="algae-words_s4">There is also a small violence in the work. To inscribe a word, the algae must cut into the琼脂 and push outward. The gel tears slightly; the filaments enter the wound. What looks like calligraphy is also an act of invasion and repair.</p>
+      </div>
+
+      <div class="section-grid reveal">
+        <figure>
+          <img src="/assets/images/algae-words/img05.jpg" alt="A cut in the agar, and the green line that follows it." loading="lazy">
+          <figcaption data-i18n="algae-words_c5">A cut in the agar, and the green line that follows it.</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/images/algae-words/img06.jpg" alt="The algae struggle outward, stretching the gel as they grow." loading="lazy">
+          <figcaption data-i18n="algae-words_c6">The algae struggle outward, stretching the gel as they grow.</figcaption>
+        </figure>
+      </div>
+
+      <div class="section-text reveal">
+        <p data-i18n="algae-words_s5">I use ordinary琼脂， but I control the heating time so that it loses transparency and takes on the texture of yellow rice paper. The medium becomes a page from an old book. The algae respond to this page; they grow differently on matte琼脂 than on glossy琼脂.</p>
+      </div>
+
+      <figure class="section-image reveal">
+        <img src="/assets/images/algae-words/img07.jpg" alt="The琼脂 cooled to a rice-paper matte, ready to receive green ink." loading="lazy">
+        <figcaption data-i18n="algae-words_c7">The琼脂 cooled to a rice-paper matte, ready to receive green ink.</figcaption>
+      </figure>
+
+      <div class="section-text reveal">
+        <p data-i18n="algae-words_s6">Before the琼脂 sets, I pour the algae in. They settle while the gel is still liquid, and as the gel hardens it freezes their first gesture. Everything after that is growth, not placement.</p>
+      </div>
+
+      <div class="section-grid reveal">
+        <figure>
+          <img src="/assets/images/algae-words/img08.jpg" alt="Pouring the culture before the surface locks into place." loading="lazy">
+          <figcaption data-i18n="algae-words_c8">Pouring the culture before the surface locks into place.</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/images/algae-words/img09.jpg" alt="The first green traces appear as the琼脂 begins to set." loading="lazy">
+          <figcaption data-i18n="algae-words_c9">The first green traces appear as the琼脂 begins to set.</figcaption>
+        </figure>
+      </div>
+
+      <div class="section-text reveal">
+        <p data-i18n="algae-words_s7">Inside the琼脂， the algae photosynthesize. They produce oxygen, and the oxygen pushes against the gel from within, forming small bubbles. The surface swells, splits, and the word becomes three-dimensional. The work is literally breathing.</p>
+      </div>
+
+      <figure class="section-image reveal">
+        <img src="/assets/images/algae-words/img10.jpg" alt="Bubbles lift the surface, turning a flat word into a small landscape." loading="lazy">
+        <figcaption data-i18n="algae-words_c10">Bubbles lift the surface, turning a flat word into a small landscape.</figcaption>
+      </figure>
+
+      <div class="section-text reveal">
+        <p data-i18n="algae-words_s8">This is why I call the work 'living.' It continues after I leave the lab. The characters thicken, fade in the center, climb the rim of the dish, or die back. Each dish is a sentence that keeps revising itself.</p>
+      </div>
+
+      <figure class="section-image reveal">
+        <img src="/assets/images/algae-words/img11.jpg" alt="Days later: the word has grown beyond its first outline." loading="lazy">
+        <figcaption data-i18n="algae-words_c11">Days later: the word has grown beyond its first outline.</figcaption>
+      </figure>
+
+      <div class="section-text reveal">
+        <p data-i18n="algae-words_s9">The final control is light. A single LED from one side makes the algae grow toward it. I place the light so that one side of the dish becomes dense and the other side sparse. The resulting pattern is not a word I wrote; it is a word the algae wrote while reaching for light.</p>
+      </div>
+
+      <div class="section-grid reveal">
+        <figure>
+          <img src="/assets/images/algae-words/img12.jpg" alt="Light enters from the left; the algae lean into it like a sentence being read." loading="lazy">
+          <figcaption data-i18n="algae-words_c12">Light enters from the left; the algae lean into it like a sentence being read.</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/images/algae-words/img13.jpg" alt="A finished piece: the characters are still growing, still deciding their final form." loading="lazy">
+          <figcaption data-i18n="algae-words_c13">A finished piece: the characters are still growing, still deciding their final form.</figcaption>
+        </figure>
+      </div>
+
+      <div class="section-text reveal">
+        <p data-i18n="algae-words_s10">What the viewer sees is one page. The work is the entire notebook: every version that grew, every word that appeared and disappeared, every bubble that rose and burst. The algae have their own language. I am only the one who learned to provide the page.</p>
+      </div>
+
+      <div class="section-grid reveal">
+        <figure>
+          <img src="/assets/images/algae-words/img14.jpg" alt="Close-up of a green stroke: the edge is soft because it is alive." loading="lazy">
+          <figcaption data-i18n="algae-words_c14">Close-up of a green stroke: the edge is soft because it is alive.</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/images/algae-words/img15.jpg" alt="The dish from above: a page of green text on yellow paper." loading="lazy">
+          <figcaption data-i18n="algae-words_c15">The dish from above: a page of green text on yellow paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/images/algae-words/img16.jpg" alt="Detail of density: where the algae crowded, the word becomes dark." loading="lazy">
+          <figcaption data-i18n="algae-words_c16">Detail of density: where the algae crowded, the word becomes dark.</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/images/algae-words/img17.jpg" alt="Final state before documentation: the word has settled, but not stopped." loading="lazy">
+          <figcaption data-i18n="algae-words_c17">Final state before documentation: the word has settled, but not stopped.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <nav class="art-nav">
+      <a class="prev" href="/works/dancing-upon-algae.html"><span class="label" data-i18n="nav_prev_label">← Previous</span><span data-i18n="algae-words_prev_title">Dancing upon Algae</span></a>
+      <a class="all-works" href="/#artworks" data-i18n="nav_all_works_btn">All works</a>
+    </nav>
+  </main>
+  <div class="edit-banner" id="editBanner">
+    Local preview · edit <code>content/*.md</code> and run <code>python build.py</code>
+  </div>
+
+  <script>
+    const i18n = {
+  "en": {
+    "brand": "Wenjie Huang",
+    "nav_about": "About",
+    "nav_research": "Research",
+    "nav_artworks": "Artworks",
+    "nav_contact": "Contact",
+    "nav_allworks": "All Works",
+    "nav_home": "Home",
+    "nav_home_back": "← Home",
+    "algae-words_title": "Algae · Words",
+    "algae-words_subtitle": "Microalgae writing on agar",
+    "algae-words_work_meta": "2023 — ongoing · Live biological work · agar plate culture · photography and high-resolution scan",
+    "algae-words_meta_label_year": "Year",
+    "algae-words_meta_value_year": "2023 — ongoing",
+    "algae-words_meta_label_medium": "Medium",
+    "algae-words_meta_value_medium": "Live biological work · agar plate culture · photography and high-resolution scan",
+    "algae-words_meta_label_dimensions": "Dimensions",
+    "algae-words_meta_value_dimensions": "Petri dishes, 9 cm diameter; presented photographs variable (typical 60 × 60 cm)",
+    "algae-words_meta_label_location": "Location",
+    "algae-words_meta_value_location": "Microbial physiology laboratory, China",
+    "algae-words_meta_label_materials": "Materials",
+    "algae-words_meta_value_materials": "Selected microalgal strains, BG-11 / f/2 medium, agar, directional LED, controlled CO₂",
+    "algae-words_meta_label_edition": "Edition",
+    "algae-words_meta_value_edition": "Each vessel is unique (1/1); photographs printed on demand",
+    "algae-words_statement": "For an algal researcher, a petri dish is routine. But algae have their own language. On agar they grow into characters, landscapes, and sentences. I do not design the characters in advance; I set the conditions—surface concentration, agar texture, light direction—and let the algae decide what to say. The work is a collaboration between my protocol and their will to grow toward light.",
+    "algae-words_process": "Each piece is constructed by adjusting three variables: surface cell concentration, agar heating time (which changes texture from translucent to rice-paper matte), and the position of a single LED. Cultures run for 7–21 days. The photographic record is taken under raking light and color-matched to gallery conditions.",
+    "algae-words_process_label": "Process · Technique",
+    "algae-words_s1": "Calligraphy has long used living things as its model—the brush follows the wind, the bamboo, the bird in flight. In this work I turn the relation around. The algae are the brush, and the琼脂 is the paper, and I am only the one who prepares the ink and leaves the room.",
+    "algae-words_c1": "A petri dish before growth: clear agar, waiting for its first word.",
+    "algae-words_s2": "The first step is to let the filaments embed themselves in the agar. They do not sit on top; they push inside, spread, and make the gel their substrate. The boundary between organism and surface dissolves.",
+    "algae-words_c2": "Filaments entering the gel like ink entering paper.",
+    "algae-words_c3": "The first spread: a green language learning its own grammar.",
+    "algae-words_s3": "By controlling the surface concentration, I create areas of density and emptiness. Where the algae are thick, the琼脂 becomes dark green and almost opaque; where they are sparse, the light passes through and the surface stays pale. The contrast is not drawn; it is grown.",
+    "algae-words_c4": "Controlled density forms a topography of presence and absence.",
+    "algae-words_s4": "There is also a small violence in the work. To inscribe a word, the algae must cut into the琼脂 and push outward. The gel tears slightly; the filaments enter the wound. What looks like calligraphy is also an act of invasion and repair.",
+    "algae-words_c5": "A cut in the agar, and the green line that follows it.",
+    "algae-words_c6": "The algae struggle outward, stretching the gel as they grow.",
+    "algae-words_s5": "I use ordinary琼脂， but I control the heating time so that it loses transparency and takes on the texture of yellow rice paper. The medium becomes a page from an old book. The algae respond to this page; they grow differently on matte琼脂 than on glossy琼脂.",
+    "algae-words_c7": "The琼脂 cooled to a rice-paper matte, ready to receive green ink.",
+    "algae-words_s6": "Before the琼脂 sets, I pour the algae in. They settle while the gel is still liquid, and as the gel hardens it freezes their first gesture. Everything after that is growth, not placement.",
+    "algae-words_c8": "Pouring the culture before the surface locks into place.",
+    "algae-words_c9": "The first green traces appear as the琼脂 begins to set.",
+    "algae-words_s7": "Inside the琼脂， the algae photosynthesize. They produce oxygen, and the oxygen pushes against the gel from within, forming small bubbles. The surface swells, splits, and the word becomes three-dimensional. The work is literally breathing.",
+    "algae-words_c10": "Bubbles lift the surface, turning a flat word into a small landscape.",
+    "algae-words_s8": "This is why I call the work 'living.' It continues after I leave the lab. The characters thicken, fade in the center, climb the rim of the dish, or die back. Each dish is a sentence that keeps revising itself.",
+    "algae-words_c11": "Days later: the word has grown beyond its first outline.",
+    "algae-words_s9": "The final control is light. A single LED from one side makes the algae grow toward it. I place the light so that one side of the dish becomes dense and the other side sparse. The resulting pattern is not a word I wrote; it is a word the algae wrote while reaching for light.",
+    "algae-words_c12": "Light enters from the left; the algae lean into it like a sentence being read.",
+    "algae-words_c13": "A finished piece: the characters are still growing, still deciding their final form.",
+    "algae-words_s10": "What the viewer sees is one page. The work is the entire notebook: every version that grew, every word that appeared and disappeared, every bubble that rose and burst. The algae have their own language. I am only the one who learned to provide the page.",
+    "algae-words_c14": "Close-up of a green stroke: the edge is soft because it is alive.",
+    "algae-words_c15": "The dish from above: a page of green text on yellow paper.",
+    "algae-words_c16": "Detail of density: where the algae crowded, the word becomes dark.",
+    "algae-words_c17": "Final state before documentation: the word has settled, but not stopped.",
+    "nav_prev_label": "← Previous",
+    "nav_next_label": "Next →",
+    "nav_all_works_btn": "All works",
+    "algae-words_prev_title": "Dancing upon Algae",
+    "hero_subtitle": "Microalgae · Industry · Art",
+    "hero_tagline": "Where microscopic life meets poetic form.",
+    "about_label": "About",
+    "about_title": "Between Science and Sensation",
+    "about_p1": "Wenjie Huang is a PhD student working in microalgae industrial biotechnology. His research traces how tiny photosynthetic organisms scale from laboratory bench to industrial reality — and along the way, he began noticing the aesthetic and philosophical vocabulary hidden in petri dishes, salt crystals, and algal blooms.",
+    "about_p2": "This site is a journal of those observations, moving between scientific rigor and artistic sensibility.",
+    "research_label": "Research",
+    "research_title": "Microalgae Industrial Biotechnology",
+    "research_p1": "From strain cultivation to process design, my work focuses on turning microscopic photosynthesis into viable industrial systems: cultivation optimization, downstream processing, and the environmental trade-offs of scaling up.",
+    "research_tag_0": "Cultivation optimization",
+    "research_tag_1": "Downstream processing",
+    "research_tag_2": "Industrial scale-up",
+    "research_tag_3": "Sustainability assessment",
+    "artworks_label": "Artworks",
+    "artworks_title": "Where Observation Becomes Image",
+    "artworks_intro": "Four works where scientific observation becomes visual language.",
+    "contact_label": "Contact",
+    "contact_title": "Let's Connect",
+    "contact_text": "For research collaborations, artistic commissions, or simply a conversation about algae.",
+    "footer": "© 2026 Wenjie Huang. Microalgae · Industry · Art."
+  },
+  "zh": {
+    "brand": "黄文杰",
+    "nav_about": "关于",
+    "nav_research": "研究",
+    "nav_artworks": "作品",
+    "nav_contact": "联系",
+    "nav_allworks": "全部作品",
+    "nav_home": "首页",
+    "nav_home_back": "← 首页",
+    "algae-words_title": "藻·言",
+    "algae-words_subtitle": "琼脂上的微藻书写",
+    "algae-words_work_meta": "2023 — 至今 · 活体生物作品 · 琼脂平板培养 · 摄影与高分辨率扫描",
+    "algae-words_meta_label_year": "年代",
+    "algae-words_meta_value_year": "2023 — 至今",
+    "algae-words_meta_label_medium": "媒材",
+    "algae-words_meta_value_medium": "活体生物作品 · 琼脂平板培养 · 摄影与高分辨率扫描",
+    "algae-words_meta_label_dimensions": "尺寸",
+    "algae-words_meta_value_dimensions": "培养皿直径 9 cm；摄影呈现尺寸可变（常见 60 × 60 cm）",
+    "algae-words_meta_label_location": "发生地",
+    "algae-words_meta_value_location": "中国，某微生物生理实验室",
+    "algae-words_meta_label_materials": "材料",
+    "algae-words_meta_value_materials": "选定微藻藻株、BG-11 / f/2 培养基、琼脂、单侧 LED 光源、控 CO₂ 环境",
+    "algae-words_meta_label_edition": "版次",
+    "algae-words_meta_value_edition": "每件器皿唯一（1/1）；摄影按需输出",
+    "algae-words_statement": "对藻类研究者来说，培养皿是日常。但藻也有自己的语言。在琼脂上，它们长成文字、风景与句子。我并不预先设计字形，而是设定条件——表面浓度、琼脂质地、光照方向——然后让藻自己决定说什么。作品是我的实验方案与它们趋光生长意志之间的合作。",
+    "algae-words_process": "每件作品通过调控三组变量构建：表面细胞浓度、琼脂加热时长（改变质地，从半透明到宣纸般哑光）、单侧 LED 位置。培养周期 7 — 21 天。摄影以掠射光完成，再依展厅光源校色匹配。",
+    "algae-words_process_label": "创作札记 · 技法",
+    "algae-words_s1": "书法自古以万物为师——风、竹、飞鸟，都是笔锋的借形。这件作品把关系反转：藻是笔，琼脂是纸，我只是研墨然后离开房间的人。",
+    "algae-words_c1": "生长前的培养皿：透明琼脂，等待它的第一个字。",
+    "algae-words_s2": "第一步，让藻丝嵌入琼脂。它们不坐在表面，而是钻进内部、蔓延，把凝胶变成自己的底物。生物与表面的边界随之消融。",
+    "algae-words_c2": "藻丝进入凝胶，如同墨渗入纸。",
+    "algae-words_c3": "最初的蔓延：一种绿色语言在学习自己的语法。",
+    "algae-words_s3": "通过控制表面浓度，我制造疏与密。藻浓处，琼脂变成深绿、几近不透明；藻疏处，光透过去，表面保持苍白。对比不是画出来的，而是长出来的。",
+    "algae-words_c4": "受控的浓度形成有与无的地形。",
+    "algae-words_s4": "作品中也有微小的暴力。要刻下一个字，藻必须切入琼脂并向外推。凝胶轻微撕裂；藻丝进入伤口。看起来像书法的，同时也是入侵与修复的行为。",
+    "algae-words_c5": "琼脂上的一道切口，与跟随它的绿色线条。",
+    "algae-words_c6": "藻挣扎着向外延伸，生长时撑开凝胶。",
+    "algae-words_s5": "我用的是普通琼脂，但控制加热时间，让它褪去透明，带上黄色宣纸的质感。培养基变成一页旧书。藻回应这页纸；它们在哑光琼脂上的生长与在光亮琼脂上不同。",
+    "algae-words_c7": "琼脂冷却成宣纸般的哑光，等待接收绿色墨。",
+    "algae-words_s6": "在琼脂凝固前，我把藻倒入。它们在凝胶仍流动时沉降；凝胶硬化时，定格了它们的第一个手势。之后的一切都是生长，而非摆放。",
+    "algae-words_c8": "在表面定型前倒入培养物。",
+    "algae-words_c9": "琼脂开始凝固时，最初的绿色痕迹出现。",
+    "algae-words_s7": "在琼脂内部，藻进行光合作用，产生氧气。氧气从内向外推挤凝胶，形成细小气泡。表面鼓起、裂开，文字变成三维。作品真的在呼吸。",
+    "algae-words_c10": "气泡顶起表面，把平面的字变成小小的地形。",
+    "algae-words_s8": "所以我称这件作品为'有生命的'。在我离开实验室后，它仍在继续。字形变浓、中心变淡、爬上皿缘，或悄然凋亡。每个培养皿都是一个不断自我修订的句子。",
+    "algae-words_c11": "数日后：文字已长出最初的轮廓之外。",
+    "algae-words_s9": "最后的控制是光。单侧 LED 让藻向光生长。我把光源放在一侧，使培养皿的一边浓密、另一边稀疏。最终形成的图案不是我写下的字；而是藻在追寻光时自己写下的字。",
+    "algae-words_c12": "光从左侧进入；藻向它倾斜，像一句正在被读出的句子。",
+    "algae-words_c13": "完成的作品：字形仍在生长，仍在决定自己的最终形态。",
+    "algae-words_s10": "观者所见只是一页。作品是整本笔记：每一种生长过的版本、每一个出现又消失的字、每一个升起又破裂的气泡。藻有自己的语言。我只是那个学会了提供纸张的人。",
+    "algae-words_c14": "一笔绿色笔触的特写：边缘柔软，因为它活着。",
+    "algae-words_c15": "俯瞰培养皿：黄纸上的绿色文字。",
+    "algae-words_c16": "密度细节：藻聚集处，字变深。",
+    "algae-words_c17": "记录前的最终状态：字已安定，但未停止。",
+    "nav_prev_label": "← 前一件",
+    "nav_next_label": "后一件 →",
+    "nav_all_works_btn": "全部作品",
+    "algae-words_prev_title": "跃然藻上",
+    "hero_subtitle": "微藻 · 工业 · 艺术",
+    "hero_tagline": "微观生命与诗意形式的交汇之处。",
+    "about_label": "关于",
+    "about_title": "在科学与感知之间",
+    "about_p1": "黄文杰是一名微藻工业生物技术方向的博士生。她的研究追踪微小的光合生物如何从实验室走向工业现实；在这个过程中，她开始留意培养皿、盐晶与藻华里隐藏的美学张力与哲学语言。",
+    "about_p2": "这个站点是这些观察的记录，在科学严谨与艺术感性之间游移。",
+    "research_label": "研究",
+    "research_title": "微藻工业生物技术",
+    "research_p1": "从藻种培养到工艺设计，我的工作聚焦于把微观光合作用转化为可规模化的工业系统：培养优化、下游加工，以及放大过程中的环境权衡。",
+    "research_tag_0": "培养优化",
+    "research_tag_1": "下游加工",
+    "research_tag_2": "工业放大",
+    "research_tag_3": "可持续性评估",
+    "artworks_label": "作品",
+    "artworks_title": "当观察成为图像",
+    "artworks_intro": "四件作品，让科学观察成为视觉语言。",
+    "contact_label": "联系",
+    "contact_title": "保持联络",
+    "contact_text": "无论是研究合作、艺术创作委托，还是关于藻类的闲聊，都欢迎联系。",
+    "footer": "© 2026 黄文杰。微藻 · 工业 · 艺术。"
+  }
+};
+    let currentLang = 'en';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (i18n[lang][key] !== undefined) {
+          el.innerHTML = i18n[lang][key];
+        }
+      });
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+      const brand = i18n[lang].brand;
+      const navLogo = document.querySelector('.nav-logo');
+      if (navLogo) navLogo.textContent = brand;
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
+    });
+
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+    const reveals = document.querySelectorAll('.reveal');
+    if (reveals.length) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+      }, { threshold: 0.12 });
+      reveals.forEach(el => observer.observe(el));
+    }
+
+    if (location.search.includes('preview=1')) {
+      document.getElementById('editBanner').classList.add('show');
+      setTimeout(() => document.getElementById('editBanner').classList.remove('show'), 6000);
+    }
+  </script>
+</body>
+</html>

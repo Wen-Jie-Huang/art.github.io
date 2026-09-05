@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Wenjie Huang — Microalgae industrial biotechnology and art.">
+  <title>Life · Crystallization — Wenjie Huang</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/cormorant-garamond@5.0.8/index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-sc@5.0.8/index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.8/index.css">
+  <style>
+    :root {
+      --bg: #F7F5EF;
+      --bg-soft: #EDE9E0;
+      --bg-dark: #1A2F22;
+      --text: #1F2E26;
+      --text-muted: #5E6E65;
+      --accent: #4A6B53;
+      --accent-light: #7A9B7F;
+      --coral: #C78D6B;
+      --coral-soft: #E8C9B6;
+      --gold: #B89A6A;
+      --border: rgba(26, 47, 34, 0.12);
+      --font-display: 'Cormorant Garamond', 'Noto Serif SC', 'Songti SC', Georgia, serif;
+      --font-body: 'Inter', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+      --font-serif-zh: 'Noto Serif SC', 'Songti SC', 'STSong', serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: var(--font-body); background: var(--bg); color: var(--text);
+           line-height: 1.7; font-size: 16px; overflow-x: hidden; }
+    h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; margin: 0; line-height: 1.2; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* Nav */
+    nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+          padding: 1.25rem 4vw; display: flex; justify-content: space-between; align-items: center;
+          transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease; }
+    nav.scrolled { background: rgba(247, 245, 239, 0.88); backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--border); }
+    .nav-logo { font-family: var(--font-display); font-size: 1.35rem; letter-spacing: 0.04em;
+                color: var(--bg); transition: color 0.4s ease; }
+    nav.scrolled .nav-logo { color: var(--text); }
+    .nav-links { display: flex; gap: 2.2rem; align-items: center; list-style: none; margin: 0; padding: 0; }
+    .nav-links a { font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase;
+                   color: rgba(247, 245, 239, 0.85); transition: color 0.3s ease; position: relative; }
+    nav.scrolled .nav-links a { color: var(--text-muted); }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px;
+                          background: var(--coral); transition: width 0.3s ease; }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: var(--coral); }
+    .nav-detail { font-size: 0.85rem !important; }
+    .lang-toggle { display: flex; gap: 0.5rem; align-items: center; font-size: 0.8rem;
+                   letter-spacing: 0.04em; color: rgba(247, 245, 239, 0.85); }
+    nav.scrolled .lang-toggle { color: var(--text-muted); }
+    .lang-btn { background: none; border: none; cursor: pointer; font-family: var(--font-body);
+                font-size: 0.8rem; color: inherit; padding: 0.25rem 0.5rem; opacity: 0.55;
+                transition: opacity 0.3s ease; }
+    .lang-btn.active { opacity: 1; font-weight: 500; }
+    .lang-btn:hover { opacity: 1; }
+    .menu-btn { display: none; background: none; border: none; cursor: pointer;
+                flex-direction: column; gap: 5px; padding: 0.5rem; }
+    .menu-btn span { display: block; width: 22px; height: 1.5px; background: var(--bg);
+                     transition: background 0.4s ease; }
+    nav.scrolled .menu-btn span { background: var(--text); }
+
+    /* Hero (homepage) */
+    .hero { position: relative; height: 100vh; min-height: 700px; display: flex; align-items: center;
+            justify-content: center; text-align: center; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: url('/assets/images/life-crystallization/hero.jpg') center/cover no-repeat;
+               filter: brightness(0.72) saturate(0.9); transform: scale(1.05);
+               animation: slowZoom 24s ease-in-out infinite alternate; }
+    @keyframes slowZoom { from { transform: scale(1.05); } to { transform: scale(1.12); } }
+    .hero-overlay { position: absolute; inset: 0;
+                    background: linear-gradient(180deg, rgba(26,47,34,0.35) 0%, rgba(26,47,34,0.55) 60%, rgba(26,47,34,0.75) 100%); }
+    .hero-content { position: relative; z-index: 2; color: var(--bg); padding: 0 6vw; max-width: 900px; }
+    .hero-content h1 { font-size: clamp(3rem, 10vw, 7rem); letter-spacing: 0.02em; margin-bottom: 0.5rem;
+                       opacity: 0; transform: translateY(30px); animation: fadeUp 1.2s ease forwards 0.3s; }
+    .hero-content .subtitle { font-family: var(--font-display); font-size: clamp(1.2rem, 3vw, 1.8rem);
+                              letter-spacing: 0.12em; opacity: 0; transform: translateY(20px);
+                              animation: fadeUp 1.2s ease forwards 0.6s; }
+    .hero-content .tagline { margin-top: 2rem; font-size: 1.05rem; font-weight: 300; opacity: 0;
+                              transform: translateY(20px); animation: fadeUp 1.2s ease forwards 0.9s; }
+    .hero-line { width: 1px; height: 80px; background: rgba(247,245,239,0.35);
+                 margin: 2.5rem auto 0; opacity: 0; animation: fadeIn 1.5s ease forwards 1.2s; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    section { padding: 8rem 6vw; position: relative; }
+    .section-label { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+                     color: var(--coral); margin-bottom: 1rem; }
+    .section-title { font-size: clamp(2.2rem, 5vw, 3.8rem); color: var(--bg-dark); margin-bottom: 3rem; }
+    .reveal { opacity: 0; transform: translateY(36px);
+              transition: opacity 0.9s ease, transform 0.9s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* About */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items: center; }
+    .about-image { position: relative; overflow: hidden; }
+    .about-image img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/5; }
+    .about-image::after { content: ''; position: absolute; inset: 0; border: 1px solid var(--border);
+                          transform: translate(16px, 16px); pointer-events: none; }
+    .about-text p { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+
+    /* Research */
+    #research { background: var(--bg-soft); }
+    .research-content { max-width: 900px; }
+    .research-content p { font-size: 1.1rem; color: var(--text-muted); }
+    .research-tags { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2.5rem; }
+    .tag { padding: 0.55rem 1.1rem; border: 1px solid var(--border); border-radius: 100px;
+           font-size: 0.8rem; letter-spacing: 0.04em; color: var(--text-muted); }
+
+    /* Artworks (homepage cards) */
+    .artwork-grid { display: grid; grid-template-columns: 1fr; gap: 6rem; margin-top: 4rem; }
+    .artwork-card { position: relative; }
+    .artwork-link { display: grid; grid-template-columns: 1.1fr 1fr; gap: 4vw; align-items: center;
+                    color: inherit; }
+    .artwork-card:nth-child(even) .artwork-link { grid-template-columns: 1fr 1.1fr; }
+    .artwork-card:nth-child(even) .artwork-hero { order: 2; }
+    .artwork-card:nth-child(even) .artwork-meta { order: 1; }
+    .artwork-hero { position: relative; overflow: hidden; aspect-ratio: 4/5; background: var(--bg-soft); }
+    .artwork-hero img { width: 100%; height: 100%; object-fit: cover;
+                        transition: transform 1s ease, filter 0.6s ease; }
+    .artwork-link:hover .artwork-hero img { transform: scale(1.04); filter: brightness(1.04); }
+    .artwork-hover-cue { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: flex-end;
+                         padding: 1.5rem; color: var(--bg); font-size: 0.9rem;
+                         background: linear-gradient(135deg, transparent 50%, rgba(26,47,34,0.65) 100%);
+                         opacity: 0; transition: opacity 0.4s ease; }
+    .artwork-link:hover .artwork-hover-cue { opacity: 1; }
+    .artwork-meta { padding: 1rem 0; }
+    .artwork-title { font-size: clamp(2.2rem, 5vw, 3.6rem); color: var(--bg-dark); margin-bottom: 0.6rem; }
+    .artwork-subtitle { font-family: var(--font-body); font-size: 1rem; color: var(--coral);
+                        letter-spacing: 0.04em; margin-bottom: 2rem; }
+    .artwork-text { color: var(--text-muted); font-size: 1.05rem; max-width: 520px; }
+    .artwork-text p { margin-bottom: 1.2rem; }
+    .artwork-enter { display: inline-block; margin-top: 1.5rem; font-size: 0.95rem;
+                     letter-spacing: 0.05em; padding-bottom: 0.4rem;
+                     border-bottom: 1px solid var(--coral); color: var(--coral);
+                     transition: color 0.3s ease, padding-bottom 0.3s ease; }
+    .artwork-link:hover .artwork-enter { color: var(--bg-dark); border-color: var(--bg-dark); }
+    .artwork-link { border-bottom: none !important; }
+    .artwork-link::after { display: none !important; }
+
+    /* Contact */
+    #contact { background: var(--bg-dark); color: var(--bg); text-align: center; }
+    #contact .section-title { color: var(--bg); }
+    #contact p { color: rgba(247,245,239,0.7); max-width: 600px; margin: 0 auto 2rem; }
+    .contact-email { display: inline-block; font-family: var(--font-display); font-size: 1.6rem;
+                     color: var(--coral-soft); border-bottom: 1px solid var(--coral); padding-bottom: 0.3rem;
+                     transition: color 0.3s ease; }
+    .contact-email:hover { color: var(--coral); }
+
+    footer { padding: 2.5rem 6vw; text-align: center; font-size: 0.8rem;
+             color: var(--text-muted); border-top: 1px solid var(--border); }
+
+    /* ===== Detail-page styles ===== */
+    .detail-page { padding-top: 5rem; }
+
+    .art-hero { height: 92vh; min-height: 640px; position: relative; overflow: hidden; }
+    .art-hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center;
+                   filter: brightness(0.85) saturate(0.95); }
+    .art-hero-overlay { position: absolute; inset: 0;
+                        background: linear-gradient(180deg, rgba(26,47,34,0.05) 0%,
+                                                    rgba(26,47,34,0.45) 75%, rgba(26,47,34,0.85) 100%); }
+    .art-hero-text { position: absolute; left: 6vw; right: 6vw; bottom: 3rem; color: var(--bg); z-index: 2; max-width: 800px; }
+    .art-hero-text .meta { font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase;
+                           color: var(--coral-soft); margin-bottom: 1rem; opacity: 0.9; }
+    .art-hero-text h1 { font-size: clamp(2.6rem, 7vw, 5rem); margin-bottom: 0.6rem; }
+    .art-hero-text .subtitle { font-family: var(--font-body); font-size: 1.1rem; opacity: 0.85; letter-spacing: 0.04em; }
+
+    .breadcrumb { padding: 2rem 6vw 0; font-size: 0.8rem; letter-spacing: 0.08em;
+                  color: var(--text-muted); text-transform: uppercase; }
+    .breadcrumb a { color: var(--coral); transition: color 0.3s ease; }
+    .breadcrumb a:hover { color: var(--bg-dark); }
+
+    .detail-section { padding: 5rem 6vw; max-width: 1200px; margin: 0 auto; }
+    .detail-section.narrow { max-width: 760px; }
+
+    .art-metadata { display: grid; grid-template-columns: 1fr 1fr; gap: 1.8rem 3rem;
+                    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+                    padding: 3rem 0; margin: 0 0 4rem; }
+    .art-metadata .meta-row { display: flex; flex-direction: column; gap: 0.4rem; }
+    .art-metadata .meta-label { font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+                                color: var(--coral); }
+    .art-metadata .meta-value { font-size: 0.98rem; color: var(--text); line-height: 1.55; }
+
+    /* Mixed sections */
+    .section-text { margin: 4rem auto; max-width: 680px; }
+    .section-text p { font-family: var(--font-serif-zh); font-size: 1.15rem; line-height: 1.9;
+                      color: var(--text); margin: 0; }
+    .section-text p:first-of-type::first-letter { font-family: var(--font-display);
+                                                     font-size: 4rem; line-height: 0.85;
+                                                     float: left; padding: 0.45rem 0.7rem 0 0;
+                                                     color: var(--coral); }
+
+    .section-image { margin: 5rem auto; max-width: 1000px; }
+    .section-image img { width: 100%; height: auto; object-fit: cover; }
+    .section-image figcaption { padding: 1rem 0 0; font-size: 0.95rem; color: var(--text-muted);
+                                 line-height: 1.5; opacity: 0.9; }
+
+    .section-grid { margin: 5rem auto; max-width: 1000px;
+                    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; }
+    .section-grid figure { margin: 0; }
+    .section-grid img { width: 100%; height: 100%; object-fit: cover; }
+    .section-grid figcaption { padding: 0.8rem 0 0; font-size: 0.9rem; color: var(--text-muted); }
+
+    .section-video { margin: 5rem auto; max-width: 1000px; }
+    .section-video video { width: 100%; height: auto; display: block; background: var(--bg-soft); }
+    .section-video figcaption { padding: 1rem 0 0; font-size: 0.95rem; color: var(--text-muted);
+                                line-height: 1.5; opacity: 0.9; }
+
+    .statement-block { margin: 2rem auto 5rem; max-width: 760px; }
+    .statement-block p { font-family: var(--font-serif-zh); font-size: 1.25rem; line-height: 1.95;
+                         color: var(--text); }
+
+    .process-block { margin: 4rem auto 0; padding: 2.5rem; background: var(--bg-soft);
+                     border-left: 3px solid var(--coral); max-width: 760px; }
+    .process-block .process-label { font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+                                    color: var(--coral); margin-bottom: 1rem; }
+    .process-block .process-text { font-size: 0.98rem; color: var(--text-muted); line-height: 1.85;
+                                   font-style: italic; }
+
+    .art-nav { margin-top: 6rem; padding: 4rem 6vw; border-top: 1px solid var(--border);
+               display: flex; justify-content: space-between; align-items: center; gap: 2rem;
+               flex-wrap: wrap; max-width: 1200px; margin-left: auto; margin-right: auto; }
+    .art-nav a { display: flex; flex-direction: column; gap: 0.3rem; font-family: var(--font-display);
+                 font-size: 1.3rem; color: var(--bg-dark); transition: color 0.3s ease; max-width: 45%; }
+    .art-nav a:hover { color: var(--coral); }
+    .art-nav a .label { font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.18em;
+                         text-transform: uppercase; color: var(--text-muted); }
+    .art-nav .all-works { font-family: var(--font-body); font-size: 0.85rem; letter-spacing: 0.18em;
+                           text-transform: uppercase; color: var(--coral); }
+    .art-nav .next { text-align: right; align-items: flex-end; }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .menu-btn { display: flex; }
+      .about-grid { grid-template-columns: 1fr; }
+      .artwork-link, .artwork-card:nth-child(even) .artwork-link { grid-template-columns: 1fr; }
+      .artwork-card:nth-child(even) .artwork-hero { order: 1; }
+      .artwork-card:nth-child(even) .artwork-meta { order: 2; }
+      .art-metadata { grid-template-columns: 1fr; gap: 1.2rem; }
+      .section-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      section { padding: 5rem 5vw; }
+      .detail-section { padding: 4rem 5vw; }
+      .art-hero { height: 75vh; min-height: 540px; }
+      .art-nav { flex-direction: column; align-items: flex-start; }
+      .art-nav a { max-width: 100%; }
+      .art-nav .next { text-align: left; align-items: flex-start; }
+      .section-text p:first-of-type::first-letter { font-size: 3rem; }
+    }
+
+    .mobile-menu { position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+                   background: var(--bg-dark); z-index: 999; display: flex; flex-direction: column;
+                   align-items: center; justify-content: center; gap: 2rem; opacity: 0;
+                   pointer-events: none; transition: opacity 0.4s ease; }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu a { color: var(--bg); font-family: var(--font-display); font-size: 1.8rem; }
+
+    .edit-banner { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--bg-dark);
+                   color: var(--bg); padding: 0.75rem 1rem; border-radius: 6px; font-size: 0.8rem;
+                   box-shadow: 0 8px 24px rgba(0,0,0,0.25); z-index: 1500; opacity: 0;
+                   transform: translateY(20px); pointer-events: none;
+                   transition: opacity 0.4s ease, transform 0.4s ease; }
+    .edit-banner.show { opacity: 1; transform: translateY(0); pointer-events: all; }
+    .edit-banner code { background: rgba(247,245,239,0.12); padding: 0.1rem 0.4rem; border-radius: 3px;
+                        font-family: ui-monospace, 'SF Mono', Consolas, monospace; }
+  </style>
+</head>
+<body class="detail">
+
+  <nav id="nav">
+    <a href="/" class="nav-logo" data-i18n="brand">Wenjie Huang</a>
+    <ul class="nav-links">
+        <li><a href="/#artworks" data-i18n="nav_allworks" class="nav-detail">All Works</a></li>
+        <li class="lang-toggle"><button class="lang-btn active" data-lang="en" aria-label="English">EN</button><span>/</span><button class="lang-btn" data-lang="zh" aria-label="中文">中</button></li>
+      </ul>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/" data-i18n="nav_home_back">Home</a>
+    <a href="/#artworks" data-i18n="nav_allworks">All Works</a>
+    <div class="lang-toggle" style="color: var(--bg); margin-top: 1rem;"><button class="lang-btn active" data-lang="en">EN</button><span>/</span><button class="lang-btn" data-lang="zh">中</button></div>
+  </div>
+
+  <main class="detail-page">
+    <p class="breadcrumb">
+      <a href="/" data-i18n="nav_home">Home</a> ·
+      <a href="/#artworks" data-i18n="nav_allworks">All Works</a> ·
+      <span data-i18n="life-crystallization_title">Life · Crystallization</span>
+    </p>
+
+    <section class="art-hero">
+      <div class="art-hero-bg" style="background-image: url('/assets/images/life-crystallization/hero.jpg')"></div>
+      <div class="art-hero-overlay"></div>
+      <div class="art-hero-text">
+        <p class="meta" data-i18n="life-crystallization_work_meta">2024 · Microscopy, salt-crystal cultivation, dormant Artemia eggs</p>
+        <h1 data-i18n="life-crystallization_title">Life · Crystallization</h1>
+        <p class="subtitle" data-i18n="life-crystallization_subtitle">A salt lake keeps time in crystals and eggs</p>
+      </div>
+    </section>
+
+    <section class="detail-section">
+      <dl class="art-metadata"><div class="meta-row"><dt class="meta-label" data-i18n="life-crystallization_meta_label_year">Year</dt><dd class="meta-value" data-i18n="life-crystallization_meta_value_year">2024</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="life-crystallization_meta_label_medium">Medium</dt><dd class="meta-value" data-i18n="life-crystallization_meta_value_medium">Microscopy, salt-crystal cultivation, dormant Artemia eggs</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="life-crystallization_meta_label_dimensions">Dimensions</dt><dd class="meta-value" data-i18n="life-crystallization_meta_value_dimensions">Variable</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="life-crystallization_meta_label_location">Location</dt><dd class="meta-value" data-i18n="life-crystallization_meta_value_location">A high-salt lake in Inner Mongolia, China</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="life-crystallization_meta_label_materials">Materials</dt><dd class="meta-value" data-i18n="life-crystallization_meta_value_materials">Brine shrimp (Artemia), salt crystals, brine, microscope slides</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="life-crystallization_meta_label_edition">Edition</dt><dd class="meta-value" data-i18n="life-crystallization_meta_value_edition">Unique piece + 5 editions</dd></div></dl>
+    </section>
+
+    <section class="detail-section narrow">
+      <div class="statement-block reveal">
+        <p data-i18n="life-crystallization_statement">The lake is a clock without hands. It measures life by evaporation: water leaves, salt stays, and the whole surface slowly tightens into mineral frames. Inside those frames, a creature no larger than a breath completes its entire biography in two or three months—then dissolves, and its next generation sleeps on, packed in salt. I am interested in the tenderness of that bargain: a whole lineage agreeing to pause until water returns.</p>
+      </div>
+      <div class="process-block reveal">
+        <p class="process-label" data-i18n="life-crystallization_process_label">Process · Technique</p>
+        <p class="process-text" data-i18n="life-crystallization_process">Specimens were collected from a high-salt lake and observed under a microscope. The work combines living brine shrimp, salt-crystal growth, and preserved dormant eggs in one visual field—so that a single frame contains birth, mating, death, and suspended rebirth.</p>
+      </div>
+    </section>
+
+    <section class="detail-section sections-flow">
+      <div class="section-text reveal">
+        <p data-i18n="life-crystallization_s1">Artemia, the brine shrimp, is smaller than a grain of sand and almost transparent. Yet in the right brine it multiplies until the water itself changes color, turning the lake a slow, quiet crimson. I think of that redness not as a stain but as a signal: millions of lives briefly agreeing to be visible at the same time.</p>
+      </div>
+
+      <figure class="section-image reveal">
+        <img src="/assets/images/life-crystallization/img01.jpg" alt="The lake surface holds a faint rose light, as if the water itself were blushing." loading="lazy">
+        <figcaption data-i18n="life-crystallization_c1">The lake surface holds a faint rose light, as if the water itself were blushing.</figcaption>
+      </figure>
+
+      <div class="section-text reveal">
+        <p data-i18n="life-crystallization_s2">Their natural life is short—two or three months, a ripple on the surface. When the lake begins to dry, salt crystals emerge like a white architecture around them. The adults cannot survive the crystallization; their bodies become part of the brine's residue. But their eggs are different.</p>
+      </div>
+
+      <figure class="section-image reveal">
+        <img src="/assets/images/life-crystallization/img02.jpg" alt="Salt crystals grow into angular rooms, waiting to be filled or emptied by water." loading="lazy">
+        <figcaption data-i18n="life-crystallization_c2">Salt crystals grow into angular rooms, waiting to be filled or emptied by water.</figcaption>
+      </figure>
+
+      <div class="section-text reveal">
+        <p data-i18n="life-crystallization_s3">The eggs enter a state called cryptobiosis: life stopped, but not ended. Packed under the salt crust, they can wait for years, even decades. When the water returns, they hatch again, as if the dry years were only a comma in a much longer sentence.</p>
+      </div>
+
+      <div class="section-grid reveal">
+        <figure>
+          <img src="/assets/images/life-crystallization/img03.jpg" alt="Dormant eggs rest like tiny punctuation marks in a mineral sentence." loading="lazy">
+          <figcaption data-i18n="life-crystallization_c3">Dormant eggs rest like tiny punctuation marks in a mineral sentence.</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/images/life-crystallization/img04.jpg" alt="Under the microscope, the boundary between crystal and cell becomes uncertain." loading="lazy">
+          <figcaption data-i18n="life-crystallization_c4">Under the microscope, the boundary between crystal and cell becomes uncertain.</figcaption>
+        </figure>
+      </div>
+
+      <div class="section-text reveal">
+        <p data-i18n="life-crystallization_s4">In the mating season, the males perform 'mate guarding'—they clasp a female and swim together, a paired dance that lasts for hours. It looks fragile, almost ornamental, but it is also a strategy against a landscape that could vanish at any moment.</p>
+      </div>
+
+      <figure class="section-image reveal">
+        <img src="/assets/images/life-crystallization/img05.jpg" alt="Mate guarding: two bodies moving as one inside the crystal frame." loading="lazy">
+        <figcaption data-i18n="life-crystallization_c5">Mate guarding: two bodies moving as one inside the crystal frame.</figcaption>
+      </figure>
+
+      <div class="section-text reveal">
+        <p data-i18n="life-crystallization_s5">I keep returning to the idea of the splash. A small wave breaks against the salt rim, and in that instant, countless lives touch air and disappear. Every splash is a calendar turning a page.</p>
+      </div>
+
+      <div class="section-grid reveal">
+        <figure>
+          <img src="/assets/images/life-crystallization/img06.jpg" alt="A single splash, magnified, becomes a constellation of brief presences." loading="lazy">
+          <figcaption data-i18n="life-crystallization_c6">A single splash, magnified, becomes a constellation of brief presences.</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/images/life-crystallization/img07.jpg" alt="The crystal acts like a lens, holding what the water has already released." loading="lazy">
+          <figcaption data-i18n="life-crystallization_c7">The crystal acts like a lens, holding what the water has already released.</figcaption>
+        </figure>
+      </div>
+
+      <div class="section-text reveal">
+        <p data-i18n="life-crystallization_s6">The title 'Life · Crystallization' tries to hold both states in one phrase: the quick flame of living and the slow geometry of salt. Crystallization is the lake's way of remembering; the shrimp are its way of forgetting and starting over.</p>
+      </div>
+
+      <figure class="section-image reveal">
+        <img src="/assets/images/life-crystallization/img08.jpg" alt="The final form: a living shrimp suspended inside its own mineral portrait." loading="lazy">
+        <figcaption data-i18n="life-crystallization_c8">The final form: a living shrimp suspended inside its own mineral portrait.</figcaption>
+      </figure>
+
+      <div class="section-text reveal">
+        <p data-i18n="life-crystallization_s7">What I wanted to show is not only a biological cycle but a kind of faith: that water will come back, that life can be folded into mineral and still remain alive, that the end of one generation is only the closed eye of the next.</p>
+      </div>
+
+      <figure class="section-image reveal">
+        <img src="/assets/images/life-crystallization/img09.jpg" alt="The whole work rests on this promise: dryness is temporary, return is certain." loading="lazy">
+        <figcaption data-i18n="life-crystallization_c9">The whole work rests on this promise: dryness is temporary, return is certain.</figcaption>
+      </figure>
+    </section>
+
+    <nav class="art-nav">
+      <span></span>
+      <a class="all-works" href="/#artworks" data-i18n="nav_all_works_btn">All works</a>
+      <a class="next" href="/works/algae-jelly.html"><span class="label" data-i18n="nav_next_label">Next →</span><span data-i18n="life-crystallization_next_title">Algae · Jelly</span></a>
+    </nav>
+  </main>
+  <div class="edit-banner" id="editBanner">
+    Local preview · edit <code>content/*.md</code> and run <code>python build.py</code>
+  </div>
+
+  <script>
+    const i18n = {
+  "en": {
+    "brand": "Wenjie Huang",
+    "nav_about": "About",
+    "nav_research": "Research",
+    "nav_artworks": "Artworks",
+    "nav_contact": "Contact",
+    "nav_allworks": "All Works",
+    "nav_home": "Home",
+    "nav_home_back": "← Home",
+    "life-crystallization_title": "Life · Crystallization",
+    "life-crystallization_subtitle": "A salt lake keeps time in crystals and eggs",
+    "life-crystallization_work_meta": "2024 · Microscopy, salt-crystal cultivation, dormant Artemia eggs",
+    "life-crystallization_meta_label_year": "Year",
+    "life-crystallization_meta_value_year": "2024",
+    "life-crystallization_meta_label_medium": "Medium",
+    "life-crystallization_meta_value_medium": "Microscopy, salt-crystal cultivation, dormant Artemia eggs",
+    "life-crystallization_meta_label_dimensions": "Dimensions",
+    "life-crystallization_meta_value_dimensions": "Variable",
+    "life-crystallization_meta_label_location": "Location",
+    "life-crystallization_meta_value_location": "A high-salt lake in Inner Mongolia, China",
+    "life-crystallization_meta_label_materials": "Materials",
+    "life-crystallization_meta_value_materials": "Brine shrimp (Artemia), salt crystals, brine, microscope slides",
+    "life-crystallization_meta_label_edition": "Edition",
+    "life-crystallization_meta_value_edition": "Unique piece + 5 editions",
+    "life-crystallization_statement": "The lake is a clock without hands. It measures life by evaporation: water leaves, salt stays, and the whole surface slowly tightens into mineral frames. Inside those frames, a creature no larger than a breath completes its entire biography in two or three months—then dissolves, and its next generation sleeps on, packed in salt. I am interested in the tenderness of that bargain: a whole lineage agreeing to pause until water returns.",
+    "life-crystallization_process": "Specimens were collected from a high-salt lake and observed under a microscope. The work combines living brine shrimp, salt-crystal growth, and preserved dormant eggs in one visual field—so that a single frame contains birth, mating, death, and suspended rebirth.",
+    "life-crystallization_process_label": "Process · Technique",
+    "life-crystallization_s1": "Artemia, the brine shrimp, is smaller than a grain of sand and almost transparent. Yet in the right brine it multiplies until the water itself changes color, turning the lake a slow, quiet crimson. I think of that redness not as a stain but as a signal: millions of lives briefly agreeing to be visible at the same time.",
+    "life-crystallization_c1": "The lake surface holds a faint rose light, as if the water itself were blushing.",
+    "life-crystallization_s2": "Their natural life is short—two or three months, a ripple on the surface. When the lake begins to dry, salt crystals emerge like a white architecture around them. The adults cannot survive the crystallization; their bodies become part of the brine's residue. But their eggs are different.",
+    "life-crystallization_c2": "Salt crystals grow into angular rooms, waiting to be filled or emptied by water.",
+    "life-crystallization_s3": "The eggs enter a state called cryptobiosis: life stopped, but not ended. Packed under the salt crust, they can wait for years, even decades. When the water returns, they hatch again, as if the dry years were only a comma in a much longer sentence.",
+    "life-crystallization_c3": "Dormant eggs rest like tiny punctuation marks in a mineral sentence.",
+    "life-crystallization_c4": "Under the microscope, the boundary between crystal and cell becomes uncertain.",
+    "life-crystallization_s4": "In the mating season, the males perform 'mate guarding'—they clasp a female and swim together, a paired dance that lasts for hours. It looks fragile, almost ornamental, but it is also a strategy against a landscape that could vanish at any moment.",
+    "life-crystallization_c5": "Mate guarding: two bodies moving as one inside the crystal frame.",
+    "life-crystallization_s5": "I keep returning to the idea of the splash. A small wave breaks against the salt rim, and in that instant, countless lives touch air and disappear. Every splash is a calendar turning a page.",
+    "life-crystallization_c6": "A single splash, magnified, becomes a constellation of brief presences.",
+    "life-crystallization_c7": "The crystal acts like a lens, holding what the water has already released.",
+    "life-crystallization_s6": "The title 'Life · Crystallization' tries to hold both states in one phrase: the quick flame of living and the slow geometry of salt. Crystallization is the lake's way of remembering; the shrimp are its way of forgetting and starting over.",
+    "life-crystallization_c8": "The final form: a living shrimp suspended inside its own mineral portrait.",
+    "life-crystallization_s7": "What I wanted to show is not only a biological cycle but a kind of faith: that water will come back, that life can be folded into mineral and still remain alive, that the end of one generation is only the closed eye of the next.",
+    "life-crystallization_c9": "The whole work rests on this promise: dryness is temporary, return is certain.",
+    "nav_prev_label": "← Previous",
+    "nav_next_label": "Next →",
+    "nav_all_works_btn": "All works",
+    "life-crystallization_next_title": "Algae · Jelly",
+    "hero_subtitle": "Microalgae · Industry · Art",
+    "hero_tagline": "Where microscopic life meets poetic form.",
+    "about_label": "About",
+    "about_title": "Between Science and Sensation",
+    "about_p1": "Wenjie Huang is a PhD student working in microalgae industrial biotechnology. His research traces how tiny photosynthetic organisms scale from laboratory bench to industrial reality — and along the way, he began noticing the aesthetic and philosophical vocabulary hidden in petri dishes, salt crystals, and algal blooms.",
+    "about_p2": "This site is a journal of those observations, moving between scientific rigor and artistic sensibility.",
+    "research_label": "Research",
+    "research_title": "Microalgae Industrial Biotechnology",
+    "research_p1": "From strain cultivation to process design, my work focuses on turning microscopic photosynthesis into viable industrial systems: cultivation optimization, downstream processing, and the environmental trade-offs of scaling up.",
+    "research_tag_0": "Cultivation optimization",
+    "research_tag_1": "Downstream processing",
+    "research_tag_2": "Industrial scale-up",
+    "research_tag_3": "Sustainability assessment",
+    "artworks_label": "Artworks",
+    "artworks_title": "Where Observation Becomes Image",
+    "artworks_intro": "Four works where scientific observation becomes visual language.",
+    "contact_label": "Contact",
+    "contact_title": "Let's Connect",
+    "contact_text": "For research collaborations, artistic commissions, or simply a conversation about algae.",
+    "footer": "© 2026 Wenjie Huang. Microalgae · Industry · Art."
+  },
+  "zh": {
+    "brand": "黄文杰",
+    "nav_about": "关于",
+    "nav_research": "研究",
+    "nav_artworks": "作品",
+    "nav_contact": "联系",
+    "nav_allworks": "全部作品",
+    "nav_home": "首页",
+    "nav_home_back": "← 首页",
+    "life-crystallization_title": "生命·结晶",
+    "life-crystallization_subtitle": "一座盐湖，以盐晶与卵封存时间",
+    "life-crystallization_work_meta": "2024 · 显微摄影、盐晶培养、丰年虾耐久卵",
+    "life-crystallization_meta_label_year": "年代",
+    "life-crystallization_meta_value_year": "2024",
+    "life-crystallization_meta_label_medium": "媒材",
+    "life-crystallization_meta_value_medium": "显微摄影、盐晶培养、丰年虾耐久卵",
+    "life-crystallization_meta_label_dimensions": "尺寸",
+    "life-crystallization_meta_value_dimensions": "可变尺寸",
+    "life-crystallization_meta_label_location": "发生地",
+    "life-crystallization_meta_value_location": "中国内蒙古，一处高盐盐湖",
+    "life-crystallization_meta_label_materials": "材料",
+    "life-crystallization_meta_value_materials": "丰年虾（卤虫）、盐晶、卤水、载玻片",
+    "life-crystallization_meta_label_edition": "版次",
+    "life-crystallization_meta_value_edition": "独版 + 5版",
+    "life-crystallization_statement": "这座湖没有指针，却是一座时钟。它以蒸发计量生命：水走了，盐留下，整个湖面渐渐收紧成矿物的画框。画框里，一个微小如呼吸的生命，在两三个月里写完自己的全部传记，然后消融；下一代以盐为被，继续沉睡，等待湖水重来。我被这份契约的温柔击中：一个物种同意暂停，直到水再次归来。",
+    "life-crystallization_process": "标本取自一处高盐盐湖，并在显微镜下观察。作品将活的丰年虾、正在生长的盐晶、封存的耐久卵并置在同一个视野中，使单幅画面同时容纳出生、交配、死亡与休眠中的重生。",
+    "life-crystallization_process_label": "创作札记 · 技法",
+    "life-crystallization_s1": "丰年虾比沙粒更小，几乎透明。然而在合适的卤水中，它们会增殖到连湖水都改变颜色，让整座湖缓慢地、安静地泛红。我把那红色不是当作污渍，而是当作一种信号：数百万生命在短暂的时间里，共同同意被看见。",
+    "life-crystallization_c1": "湖面泛着淡淡的玫瑰色，仿佛水本身正在脸红。",
+    "life-crystallization_s2": "它们的自然生命很短——两三个月，如水面一道涟漪。当湖水开始干涸，盐晶像白色建筑一样在它们周围升起。成体无法在结晶中存活，身体成为卤水残留的一部分。但它们的卵不同。",
+    "life-crystallization_c2": "盐晶生长成有棱角的房间，等待被水填满或抽空。",
+    "life-crystallization_s3": "卵进入一种叫隐生（cryptobiosis）的状态：生命暂停，但未终结。它们被压在盐壳之下，可以等待数年，甚至数十年。当水再次归来，它们重新孵化，仿佛那些干旱的年月只是漫长句子中的一个逗号。",
+    "life-crystallization_c3": "休眠的卵像矿物资句中微小的标点。",
+    "life-crystallization_c4": "显微镜下，晶体与细胞的边界变得不确定。",
+    "life-crystallization_s4": "在繁殖季，雄性丰年虾会抱对——它们抱住雌性，一起游动，这场双人舞可持续数小时。它看起来脆弱、几近装饰，却也是一种策略，对抗随时可能消失的环境。",
+    "life-crystallization_c5": "抱对：两个身体在晶体画框内像同一个整体般移动。",
+    "life-crystallization_s5": "我不断回到'溅起的水花'这个意象。一道小浪打在盐边，就在那一瞬间，无数生命触碰空气，然后消失。每一朵浪花，都是日历翻过一页。",
+    "life-crystallization_c6": "一朵水花被放大，成为短暂存在的星座。",
+    "life-crystallization_c7": "晶体像一枚透镜，留住水已经松开的东西。",
+    "life-crystallization_s6": "《生命·结晶》这个标题试图同时容纳两种状态：生命迅疾的火焰，与盐缓慢的几何。结晶是湖的记忆方式；丰年虾是它的遗忘与重新开始。",
+    "life-crystallization_c8": "最终形态：一只活的生命，悬浮在自己的矿物肖像中。",
+    "life-crystallization_s7": "我想呈现的不仅是生物循环，更是一种信念：水会回来；生命可以被折叠进矿物，却依然活着；一代的终结，只是下一代合上的眼睛。",
+    "life-crystallization_c9": "整件作品倚靠这一承诺：干涸是暂时的，归来是必然的。",
+    "nav_prev_label": "← 前一件",
+    "nav_next_label": "后一件 →",
+    "nav_all_works_btn": "全部作品",
+    "life-crystallization_next_title": "微藻果冻",
+    "hero_subtitle": "微藻 · 工业 · 艺术",
+    "hero_tagline": "微观生命与诗意形式的交汇之处。",
+    "about_label": "关于",
+    "about_title": "在科学与感知之间",
+    "about_p1": "黄文杰是一名微藻工业生物技术方向的博士生。她的研究追踪微小的光合生物如何从实验室走向工业现实；在这个过程中，她开始留意培养皿、盐晶与藻华里隐藏的美学张力与哲学语言。",
+    "about_p2": "这个站点是这些观察的记录，在科学严谨与艺术感性之间游移。",
+    "research_label": "研究",
+    "research_title": "微藻工业生物技术",
+    "research_p1": "从藻种培养到工艺设计，我的工作聚焦于把微观光合作用转化为可规模化的工业系统：培养优化、下游加工，以及放大过程中的环境权衡。",
+    "research_tag_0": "培养优化",
+    "research_tag_1": "下游加工",
+    "research_tag_2": "工业放大",
+    "research_tag_3": "可持续性评估",
+    "artworks_label": "作品",
+    "artworks_title": "当观察成为图像",
+    "artworks_intro": "四件作品，让科学观察成为视觉语言。",
+    "contact_label": "联系",
+    "contact_title": "保持联络",
+    "contact_text": "无论是研究合作、艺术创作委托，还是关于藻类的闲聊，都欢迎联系。",
+    "footer": "© 2026 黄文杰。微藻 · 工业 · 艺术。"
+  }
+};
+    let currentLang = 'en';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (i18n[lang][key] !== undefined) {
+          el.innerHTML = i18n[lang][key];
+        }
+      });
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+      const brand = i18n[lang].brand;
+      const navLogo = document.querySelector('.nav-logo');
+      if (navLogo) navLogo.textContent = brand;
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
+    });
+
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+    const reveals = document.querySelectorAll('.reveal');
+    if (reveals.length) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+      }, { threshold: 0.12 });
+      reveals.forEach(el => observer.observe(el));
+    }
+
+    if (location.search.includes('preview=1')) {
+      document.getElementById('editBanner').classList.add('show');
+      setTimeout(() => document.getElementById('editBanner').classList.remove('show'), 6000);
+    }
+  </script>
+</body>
+</html>
