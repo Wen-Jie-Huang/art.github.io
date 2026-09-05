@@ -175,7 +175,8 @@
     .art-hero-text .subtitle { font-family: var(--font-body); font-size: 1.15rem; opacity: 0.95; letter-spacing: 0.04em;
                                 text-shadow: 0 2px 16px rgba(0,0,0,0.5); }
 
-    .breadcrumb { padding: 2rem 6vw 0; font-size: 0.8rem; letter-spacing: 0.08em;
+    .detail-page { padding-top: 5rem; }
+    .breadcrumb { padding: 1.5rem 6vw 0; font-size: 0.8rem; letter-spacing: 0.08em;
                   color: var(--text-muted); text-transform: uppercase; }
     .breadcrumb a { color: var(--coral); transition: color 0.3s ease; }
     .breadcrumb a:hover { color: var(--bg-dark); }
@@ -228,16 +229,18 @@
                                    font-style: italic; }
 
     .art-nav { margin-top: 6rem; padding: 4rem 6vw; border-top: 1px solid var(--border);
-               display: flex; justify-content: space-between; align-items: center; gap: 2rem;
-               flex-wrap: wrap; max-width: 1200px; margin-left: auto; margin-right: auto; }
+               display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1.5rem;
+               max-width: 1200px; margin-left: auto; margin-right: auto; }
     .art-nav a { display: flex; flex-direction: column; gap: 0.3rem; font-family: var(--font-display);
-                 font-size: 1.3rem; color: var(--bg-dark); transition: color 0.3s ease; max-width: 45%; }
+                 font-size: 1.3rem; color: var(--bg-dark); transition: color 0.3s ease; }
     .art-nav a:hover { color: var(--coral); }
     .art-nav a .label { font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.18em;
                          text-transform: uppercase; color: var(--text-muted); }
-    .art-nav .all-works { font-family: var(--font-body); font-size: 0.85rem; letter-spacing: 0.18em;
-                           text-transform: uppercase; color: var(--coral); }
-    .art-nav .next { text-align: right; align-items: flex-end; }
+    .art-nav .all-works { grid-column: 2; justify-self: center; font-family: var(--font-body);
+                           font-size: 0.85rem; letter-spacing: 0.18em; text-transform: uppercase;
+                           color: var(--coral); }
+    .art-nav .prev { grid-column: 1; justify-self: start; }
+    .art-nav .next { grid-column: 3; justify-self: end; text-align: right; align-items: flex-end; }
 
     @media (max-width: 900px) {
       .nav-links { display: none; }
@@ -253,9 +256,9 @@
       section { padding: 5rem 5vw; }
       .detail-section { padding: 4rem 5vw; }
       .art-hero { height: 75vh; min-height: 540px; }
-      .art-nav { flex-direction: column; align-items: flex-start; }
+      .art-nav { grid-template-columns: 1fr; justify-items: stretch; gap: 1.2rem; }
+      .art-nav .prev, .art-nav .all-works, .art-nav .next { grid-column: 1; justify-self: start; text-align: left; align-items: flex-start; }
       .art-nav a { max-width: 100%; }
-      .art-nav .next { text-align: left; align-items: flex-start; }
       .section-text p:first-of-type::first-letter { font-size: 3rem; }
     }
 
@@ -303,14 +306,14 @@
       <div class="art-hero-bg" style="background-image: url('../assets/images/dancing-upon-algae/hero.jpg')"></div>
       <div class="art-hero-overlay"></div>
       <div class="art-hero-text">
-        <p class="meta" data-i18n="dancing-upon-algae_work_meta">2024 · Photography, high-speed video, single-channel video loop</p>
+        <p class="meta" data-i18n="dancing-upon-algae_work_meta">2026 · Photography, high-speed video, single-channel video loop</p>
         <h1 data-i18n="dancing-upon-algae_title">Dancing upon Algae</h1>
         <p class="subtitle" data-i18n="dancing-upon-algae_subtitle">Spirulina choreographed by vibration</p>
       </div>
     </section>
 
     <section class="detail-section">
-      <dl class="art-metadata"><div class="meta-row"><dt class="meta-label" data-i18n="dancing-upon-algae_meta_label_year">Year</dt><dd class="meta-value" data-i18n="dancing-upon-algae_meta_value_year">2024</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="dancing-upon-algae_meta_label_medium">Medium</dt><dd class="meta-value" data-i18n="dancing-upon-algae_meta_value_medium">Photography, high-speed video, single-channel video loop</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="dancing-upon-algae_meta_label_dimensions">Dimensions</dt><dd class="meta-value" data-i18n="dancing-upon-algae_meta_value_dimensions">Variable; photographs 80 × 120 cm and 60 × 90 cm; video 2 min 30 sec loop, silent</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="dancing-upon-algae_meta_label_location">Location</dt><dd class="meta-value" data-i18n="dancing-upon-algae_meta_value_location">Spirulina harvest line, industrial pilot facility</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="dancing-upon-algae_meta_label_materials">Materials</dt><dd class="meta-value" data-i18n="dancing-upon-algae_meta_value_materials">Spirulina (Arthrospira platensis) culture, vibro-sieve separator, controlled culture density, ambient light</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="dancing-upon-algae_meta_label_edition">Edition</dt><dd class="meta-value" data-i18n="dancing-upon-algae_meta_value_edition">Photography: edition of 3 + 2 AP · Video: open edition</dd></div></dl>
+      <dl class="art-metadata"><div class="meta-row"><dt class="meta-label" data-i18n="dancing-upon-algae_meta_label_year">Year</dt><dd class="meta-value" data-i18n="dancing-upon-algae_meta_value_year">2026</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="dancing-upon-algae_meta_label_medium">Medium</dt><dd class="meta-value" data-i18n="dancing-upon-algae_meta_value_medium">Photography, high-speed video, single-channel video loop</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="dancing-upon-algae_meta_label_dimensions">Dimensions</dt><dd class="meta-value" data-i18n="dancing-upon-algae_meta_value_dimensions">Variable; photographs 80 × 120 cm and 60 × 90 cm; video 2 min 30 sec loop, silent</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="dancing-upon-algae_meta_label_materials">Materials</dt><dd class="meta-value" data-i18n="dancing-upon-algae_meta_value_materials">Spirulina (Arthrospira platensis) culture, vibro-sieve separator, controlled culture density, ambient light</dd></div></dl>
     </section>
 
     <section class="detail-section narrow">
@@ -388,19 +391,15 @@
     "nav_home_back": "← Home",
     "dancing-upon-algae_title": "Dancing upon Algae",
     "dancing-upon-algae_subtitle": "Spirulina choreographed by vibration",
-    "dancing-upon-algae_work_meta": "2024 · Photography, high-speed video, single-channel video loop",
+    "dancing-upon-algae_work_meta": "2026 · Photography, high-speed video, single-channel video loop",
     "dancing-upon-algae_meta_label_year": "Year",
-    "dancing-upon-algae_meta_value_year": "2024",
+    "dancing-upon-algae_meta_value_year": "2026",
     "dancing-upon-algae_meta_label_medium": "Medium",
     "dancing-upon-algae_meta_value_medium": "Photography, high-speed video, single-channel video loop",
     "dancing-upon-algae_meta_label_dimensions": "Dimensions",
     "dancing-upon-algae_meta_value_dimensions": "Variable; photographs 80 × 120 cm and 60 × 90 cm; video 2 min 30 sec loop, silent",
-    "dancing-upon-algae_meta_label_location": "Location",
-    "dancing-upon-algae_meta_value_location": "Spirulina harvest line, industrial pilot facility",
     "dancing-upon-algae_meta_label_materials": "Materials",
     "dancing-upon-algae_meta_value_materials": "Spirulina (Arthrospira platensis) culture, vibro-sieve separator, controlled culture density, ambient light",
-    "dancing-upon-algae_meta_label_edition": "Edition",
-    "dancing-upon-algae_meta_value_edition": "Photography: edition of 3 + 2 AP · Video: open edition",
     "dancing-upon-algae_statement": "In industry, a vibro-sieve is a machine for separating solids from liquid. I kept it running every day for months. One afternoon, by adjusting the concentration of Spirulina and the density on the sieve, the algae stopped separating and started dancing. Each grain became a tiny dancer, and the sieve became the stage. This work asks whether the difference between 'processing' and 'performing' is only a matter of speed and attention.",
     "dancing-upon-algae_process": "Filmed and photographed at the Spirulina pilot line under available light. The dance in each image and video is created live by varying feed concentration and sieve amplitude; nothing in the frame has been composited or repeated. Videos are single continuous takes, presented on loop.",
     "dancing-upon-algae_process_label": "Process · Technique",
@@ -449,19 +448,15 @@
     "nav_home_back": "← 首页",
     "dancing-upon-algae_title": "跃然藻上",
     "dancing-upon-algae_subtitle": "振动中的螺旋藻之舞",
-    "dancing-upon-algae_work_meta": "2024 · 摄影、高速影像、单通道循环影像",
+    "dancing-upon-algae_work_meta": "2026 · 摄影、高速影像、单通道循环影像",
     "dancing-upon-algae_meta_label_year": "年代",
-    "dancing-upon-algae_meta_value_year": "2024",
+    "dancing-upon-algae_meta_value_year": "2026",
     "dancing-upon-algae_meta_label_medium": "媒材",
     "dancing-upon-algae_meta_value_medium": "摄影、高速影像、单通道循环影像",
     "dancing-upon-algae_meta_label_dimensions": "尺寸",
     "dancing-upon-algae_meta_value_dimensions": "可变尺寸；摄影作品 80 × 120 cm 与 60 × 90 cm；影像 2 分 30 秒循环，无声",
-    "dancing-upon-algae_meta_label_location": "发生地",
-    "dancing-upon-algae_meta_value_location": "工业中试线，螺旋藻采收工段",
     "dancing-upon-algae_meta_label_materials": "材料",
     "dancing-upon-algae_meta_value_materials": "钝顶螺旋藻（Arthrospira platensis）培养液、旋振筛、调控后藻密度、自然光",
-    "dancing-upon-algae_meta_label_edition": "版次",
-    "dancing-upon-algae_meta_value_edition": "摄影版次：3 + 2 AP · 影像版次：开放版次",
     "dancing-upon-algae_statement": "在工业中，旋振筛是用来把固体从液体里分离出来的机器。我曾经数月每天守着它运行。一个午后，我调高了螺旋藻的浓度与筛上密度，发现藻不再分离，而是开始起舞。每一颗藻都变成一个小小的舞者，筛子成了舞台。这件作品追问：'加工'与'表演'之间的区别，是否只是速度与注意力的差别。",
     "dancing-upon-algae_process": "在螺旋藻中试线的自然光下拍摄与录制。每一帧画面中的舞蹈都由实时调变的进料浓度与筛机振幅生成，画面中没有任何合成或重复。影像为单次连续拍摄、无剪辑，循环播放。",
     "dancing-upon-algae_process_label": "创作札记 · 技法",

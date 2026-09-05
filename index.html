@@ -175,7 +175,8 @@
     .art-hero-text .subtitle { font-family: var(--font-body); font-size: 1.15rem; opacity: 0.95; letter-spacing: 0.04em;
                                 text-shadow: 0 2px 16px rgba(0,0,0,0.5); }
 
-    .breadcrumb { padding: 2rem 6vw 0; font-size: 0.8rem; letter-spacing: 0.08em;
+    .detail-page { padding-top: 5rem; }
+    .breadcrumb { padding: 1.5rem 6vw 0; font-size: 0.8rem; letter-spacing: 0.08em;
                   color: var(--text-muted); text-transform: uppercase; }
     .breadcrumb a { color: var(--coral); transition: color 0.3s ease; }
     .breadcrumb a:hover { color: var(--bg-dark); }
@@ -228,16 +229,18 @@
                                    font-style: italic; }
 
     .art-nav { margin-top: 6rem; padding: 4rem 6vw; border-top: 1px solid var(--border);
-               display: flex; justify-content: space-between; align-items: center; gap: 2rem;
-               flex-wrap: wrap; max-width: 1200px; margin-left: auto; margin-right: auto; }
+               display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1.5rem;
+               max-width: 1200px; margin-left: auto; margin-right: auto; }
     .art-nav a { display: flex; flex-direction: column; gap: 0.3rem; font-family: var(--font-display);
-                 font-size: 1.3rem; color: var(--bg-dark); transition: color 0.3s ease; max-width: 45%; }
+                 font-size: 1.3rem; color: var(--bg-dark); transition: color 0.3s ease; }
     .art-nav a:hover { color: var(--coral); }
     .art-nav a .label { font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.18em;
                          text-transform: uppercase; color: var(--text-muted); }
-    .art-nav .all-works { font-family: var(--font-body); font-size: 0.85rem; letter-spacing: 0.18em;
-                           text-transform: uppercase; color: var(--coral); }
-    .art-nav .next { text-align: right; align-items: flex-end; }
+    .art-nav .all-works { grid-column: 2; justify-self: center; font-family: var(--font-body);
+                           font-size: 0.85rem; letter-spacing: 0.18em; text-transform: uppercase;
+                           color: var(--coral); }
+    .art-nav .prev { grid-column: 1; justify-self: start; }
+    .art-nav .next { grid-column: 3; justify-self: end; text-align: right; align-items: flex-end; }
 
     @media (max-width: 900px) {
       .nav-links { display: none; }
@@ -253,9 +256,9 @@
       section { padding: 5rem 5vw; }
       .detail-section { padding: 4rem 5vw; }
       .art-hero { height: 75vh; min-height: 540px; }
-      .art-nav { flex-direction: column; align-items: flex-start; }
+      .art-nav { grid-template-columns: 1fr; justify-items: stretch; gap: 1.2rem; }
+      .art-nav .prev, .art-nav .all-works, .art-nav .next { grid-column: 1; justify-self: start; text-align: left; align-items: flex-start; }
       .art-nav a { max-width: 100%; }
-      .art-nav .next { text-align: left; align-items: flex-start; }
       .section-text p:first-of-type::first-letter { font-size: 3rem; }
     }
 

@@ -175,7 +175,8 @@
     .art-hero-text .subtitle { font-family: var(--font-body); font-size: 1.15rem; opacity: 0.95; letter-spacing: 0.04em;
                                 text-shadow: 0 2px 16px rgba(0,0,0,0.5); }
 
-    .breadcrumb { padding: 2rem 6vw 0; font-size: 0.8rem; letter-spacing: 0.08em;
+    .detail-page { padding-top: 5rem; }
+    .breadcrumb { padding: 1.5rem 6vw 0; font-size: 0.8rem; letter-spacing: 0.08em;
                   color: var(--text-muted); text-transform: uppercase; }
     .breadcrumb a { color: var(--coral); transition: color 0.3s ease; }
     .breadcrumb a:hover { color: var(--bg-dark); }
@@ -228,16 +229,18 @@
                                    font-style: italic; }
 
     .art-nav { margin-top: 6rem; padding: 4rem 6vw; border-top: 1px solid var(--border);
-               display: flex; justify-content: space-between; align-items: center; gap: 2rem;
-               flex-wrap: wrap; max-width: 1200px; margin-left: auto; margin-right: auto; }
+               display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1.5rem;
+               max-width: 1200px; margin-left: auto; margin-right: auto; }
     .art-nav a { display: flex; flex-direction: column; gap: 0.3rem; font-family: var(--font-display);
-                 font-size: 1.3rem; color: var(--bg-dark); transition: color 0.3s ease; max-width: 45%; }
+                 font-size: 1.3rem; color: var(--bg-dark); transition: color 0.3s ease; }
     .art-nav a:hover { color: var(--coral); }
     .art-nav a .label { font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.18em;
                          text-transform: uppercase; color: var(--text-muted); }
-    .art-nav .all-works { font-family: var(--font-body); font-size: 0.85rem; letter-spacing: 0.18em;
-                           text-transform: uppercase; color: var(--coral); }
-    .art-nav .next { text-align: right; align-items: flex-end; }
+    .art-nav .all-works { grid-column: 2; justify-self: center; font-family: var(--font-body);
+                           font-size: 0.85rem; letter-spacing: 0.18em; text-transform: uppercase;
+                           color: var(--coral); }
+    .art-nav .prev { grid-column: 1; justify-self: start; }
+    .art-nav .next { grid-column: 3; justify-self: end; text-align: right; align-items: flex-end; }
 
     @media (max-width: 900px) {
       .nav-links { display: none; }
@@ -253,9 +256,9 @@
       section { padding: 5rem 5vw; }
       .detail-section { padding: 4rem 5vw; }
       .art-hero { height: 75vh; min-height: 540px; }
-      .art-nav { flex-direction: column; align-items: flex-start; }
+      .art-nav { grid-template-columns: 1fr; justify-items: stretch; gap: 1.2rem; }
+      .art-nav .prev, .art-nav .all-works, .art-nav .next { grid-column: 1; justify-self: start; text-align: left; align-items: flex-start; }
       .art-nav a { max-width: 100%; }
-      .art-nav .next { text-align: left; align-items: flex-start; }
       .section-text p:first-of-type::first-letter { font-size: 3rem; }
     }
 
@@ -303,14 +306,14 @@
       <div class="art-hero-bg" style="background-image: url('../assets/images/algae-jelly/hero.jpg')"></div>
       <div class="art-hero-overlay"></div>
       <div class="art-hero-text">
-        <p class="meta" data-i18n="algae-jelly_work_meta">2024 · Living culture, gel medium, microscopy, photography</p>
+        <p class="meta" data-i18n="algae-jelly_work_meta">2026 · Living culture, gel medium, microscopy, photography</p>
         <h1 data-i18n="algae-jelly_title">Algae · Jelly</h1>
         <p class="subtitle" data-i18n="algae-jelly_subtitle">An unknown alga held in its own thickened garden</p>
       </div>
     </section>
 
     <section class="detail-section">
-      <dl class="art-metadata"><div class="meta-row"><dt class="meta-label" data-i18n="algae-jelly_meta_label_year">Year</dt><dd class="meta-value" data-i18n="algae-jelly_meta_value_year">2024</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="algae-jelly_meta_label_medium">Medium</dt><dd class="meta-value" data-i18n="algae-jelly_meta_value_medium">Living culture, gel medium, microscopy, photography</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="algae-jelly_meta_label_dimensions">Dimensions</dt><dd class="meta-value" data-i18n="algae-jelly_meta_value_dimensions">Variable; petri dishes and flasks, 6 — 15 cm diameter</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="algae-jelly_meta_label_location">Location</dt><dd class="meta-value" data-i18n="algae-jelly_meta_value_location">An alkaline lake in Inner Mongolia, China</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="algae-jelly_meta_label_materials">Materials</dt><dd class="meta-value" data-i18n="algae-jelly_meta_value_materials">Filamentous microalgae isolated from field water, culture medium, agar-based thickener</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="algae-jelly_meta_label_edition">Edition</dt><dd class="meta-value" data-i18n="algae-jelly_meta_value_edition">Each vessel is unique; photographs edition of 3 + 1 AP</dd></div></dl>
+      <dl class="art-metadata"><div class="meta-row"><dt class="meta-label" data-i18n="algae-jelly_meta_label_year">Year</dt><dd class="meta-value" data-i18n="algae-jelly_meta_value_year">2026</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="algae-jelly_meta_label_medium">Medium</dt><dd class="meta-value" data-i18n="algae-jelly_meta_value_medium">Living culture, gel medium, microscopy, photography</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="algae-jelly_meta_label_dimensions">Dimensions</dt><dd class="meta-value" data-i18n="algae-jelly_meta_value_dimensions">Variable; petri dishes and flasks, 6 — 15 cm diameter</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="algae-jelly_meta_label_materials">Materials</dt><dd class="meta-value" data-i18n="algae-jelly_meta_value_materials">Filamentous microalgae isolated from field water, culture medium, agar-based thickener</dd></div></dl>
     </section>
 
     <section class="detail-section narrow">
@@ -390,19 +393,15 @@
     "nav_home_back": "← Home",
     "algae-jelly_title": "Algae · Jelly",
     "algae-jelly_subtitle": "An unknown alga held in its own thickened garden",
-    "algae-jelly_work_meta": "2024 · Living culture, gel medium, microscopy, photography",
+    "algae-jelly_work_meta": "2026 · Living culture, gel medium, microscopy, photography",
     "algae-jelly_meta_label_year": "Year",
-    "algae-jelly_meta_value_year": "2024",
+    "algae-jelly_meta_value_year": "2026",
     "algae-jelly_meta_label_medium": "Medium",
     "algae-jelly_meta_value_medium": "Living culture, gel medium, microscopy, photography",
     "algae-jelly_meta_label_dimensions": "Dimensions",
     "algae-jelly_meta_value_dimensions": "Variable; petri dishes and flasks, 6 — 15 cm diameter",
-    "algae-jelly_meta_label_location": "Location",
-    "algae-jelly_meta_value_location": "An alkaline lake in Inner Mongolia, China",
     "algae-jelly_meta_label_materials": "Materials",
     "algae-jelly_meta_value_materials": "Filamentous microalgae isolated from field water, culture medium, agar-based thickener",
-    "algae-jelly_meta_label_edition": "Edition",
-    "algae-jelly_meta_value_edition": "Each vessel is unique; photographs edition of 3 + 1 AP",
     "algae-jelly_statement": "We found this alga in an alkaline lake in Inner Mongolia. Under the microscope it clusters like a peony, a soft green bloom made of filaments. We have not sequenced it yet; for now, it is simply an organism with no name, learning to live in a thickened medium that I prepared for it. The jelly holds it still enough to be seen, yet alive enough to keep growing. I like that tension: the gel is a frame, a garden, and a question at the same time.",
     "algae-jelly_process": "A filamentous microalga was isolated from water sampled in an alkaline lake. Because the cells naturally aggregate into tight granules, the medium was thickened until it held a jelly-like consistency. The work is shown as both living cultures in vessels and macro photographs of the green, granular surface.",
     "algae-jelly_process_label": "Process · Technique",
@@ -452,19 +451,15 @@
     "nav_home_back": "← 首页",
     "algae-jelly_title": "微藻果冻",
     "algae-jelly_subtitle": "一株未知微藻，被养在 thickened 的花园里",
-    "algae-jelly_work_meta": "2024 · 活体培养、凝胶培养基、显微摄影、摄影",
+    "algae-jelly_work_meta": "2026 · 活体培养、凝胶培养基、显微摄影、摄影",
     "algae-jelly_meta_label_year": "年代",
-    "algae-jelly_meta_value_year": "2024",
+    "algae-jelly_meta_value_year": "2026",
     "algae-jelly_meta_label_medium": "媒材",
     "algae-jelly_meta_value_medium": "活体培养、凝胶培养基、显微摄影、摄影",
     "algae-jelly_meta_label_dimensions": "尺寸",
     "algae-jelly_meta_value_dimensions": "可变尺寸；培养皿与烧瓶，直径 6 — 15 cm",
-    "algae-jelly_meta_label_location": "发生地",
-    "algae-jelly_meta_value_location": "中国内蒙古，一处碱性湖",
     "algae-jelly_meta_label_materials": "材料",
     "algae-jelly_meta_value_materials": "从野外水样分离的丝状微藻、培养基、琼脂类增稠剂",
-    "algae-jelly_meta_label_edition": "版次",
-    "algae-jelly_meta_value_edition": "每件器皿唯一；摄影作品版次 3 + 1 AP",
     "algae-jelly_statement": "这株藻来自内蒙古的一处碱性湖。显微镜下，它像牡丹一样成团绽放，一簇由藻丝组成的柔软绿色花球。我们尚未为它测序；此刻，它只是一株还没有名字的生命，在我为它调配的 thickened 培养基中学习生存。果冻让它静止到足以被观看，却又鲜活到继续生长。我喜欢这种张力：凝胶同时是画框、花园，也是一个问题。",
     "algae-jelly_process": "从碱性湖水样中分离出一株丝状微藻。由于藻细胞天然团聚成致密颗粒，培养基被适当增稠，形成果冻般的质地。作品以器皿中的活体培养和绿色颗粒表面的微距摄影两种形式呈现。",
     "algae-jelly_process_label": "创作札记 · 技法",

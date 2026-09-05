@@ -175,7 +175,8 @@
     .art-hero-text .subtitle { font-family: var(--font-body); font-size: 1.15rem; opacity: 0.95; letter-spacing: 0.04em;
                                 text-shadow: 0 2px 16px rgba(0,0,0,0.5); }
 
-    .breadcrumb { padding: 2rem 6vw 0; font-size: 0.8rem; letter-spacing: 0.08em;
+    .detail-page { padding-top: 5rem; }
+    .breadcrumb { padding: 1.5rem 6vw 0; font-size: 0.8rem; letter-spacing: 0.08em;
                   color: var(--text-muted); text-transform: uppercase; }
     .breadcrumb a { color: var(--coral); transition: color 0.3s ease; }
     .breadcrumb a:hover { color: var(--bg-dark); }
@@ -228,16 +229,18 @@
                                    font-style: italic; }
 
     .art-nav { margin-top: 6rem; padding: 4rem 6vw; border-top: 1px solid var(--border);
-               display: flex; justify-content: space-between; align-items: center; gap: 2rem;
-               flex-wrap: wrap; max-width: 1200px; margin-left: auto; margin-right: auto; }
+               display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1.5rem;
+               max-width: 1200px; margin-left: auto; margin-right: auto; }
     .art-nav a { display: flex; flex-direction: column; gap: 0.3rem; font-family: var(--font-display);
-                 font-size: 1.3rem; color: var(--bg-dark); transition: color 0.3s ease; max-width: 45%; }
+                 font-size: 1.3rem; color: var(--bg-dark); transition: color 0.3s ease; }
     .art-nav a:hover { color: var(--coral); }
     .art-nav a .label { font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.18em;
                          text-transform: uppercase; color: var(--text-muted); }
-    .art-nav .all-works { font-family: var(--font-body); font-size: 0.85rem; letter-spacing: 0.18em;
-                           text-transform: uppercase; color: var(--coral); }
-    .art-nav .next { text-align: right; align-items: flex-end; }
+    .art-nav .all-works { grid-column: 2; justify-self: center; font-family: var(--font-body);
+                           font-size: 0.85rem; letter-spacing: 0.18em; text-transform: uppercase;
+                           color: var(--coral); }
+    .art-nav .prev { grid-column: 1; justify-self: start; }
+    .art-nav .next { grid-column: 3; justify-self: end; text-align: right; align-items: flex-end; }
 
     @media (max-width: 900px) {
       .nav-links { display: none; }
@@ -253,9 +256,9 @@
       section { padding: 5rem 5vw; }
       .detail-section { padding: 4rem 5vw; }
       .art-hero { height: 75vh; min-height: 540px; }
-      .art-nav { flex-direction: column; align-items: flex-start; }
+      .art-nav { grid-template-columns: 1fr; justify-items: stretch; gap: 1.2rem; }
+      .art-nav .prev, .art-nav .all-works, .art-nav .next { grid-column: 1; justify-self: start; text-align: left; align-items: flex-start; }
       .art-nav a { max-width: 100%; }
-      .art-nav .next { text-align: left; align-items: flex-start; }
       .section-text p:first-of-type::first-letter { font-size: 3rem; }
     }
 
@@ -303,14 +306,14 @@
       <div class="art-hero-bg" style="background-image: url('../assets/images/life-crystallization/hero.jpg')"></div>
       <div class="art-hero-overlay"></div>
       <div class="art-hero-text">
-        <p class="meta" data-i18n="life-crystallization_work_meta">2024 · Microscopy, salt-crystal cultivation, dormant Artemia eggs</p>
+        <p class="meta" data-i18n="life-crystallization_work_meta">2026 · Microscopy, salt-crystal cultivation, dormant Artemia eggs</p>
         <h1 data-i18n="life-crystallization_title">Life · Crystallization</h1>
         <p class="subtitle" data-i18n="life-crystallization_subtitle">A salt lake keeps time in crystals and eggs</p>
       </div>
     </section>
 
     <section class="detail-section">
-      <dl class="art-metadata"><div class="meta-row"><dt class="meta-label" data-i18n="life-crystallization_meta_label_year">Year</dt><dd class="meta-value" data-i18n="life-crystallization_meta_value_year">2024</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="life-crystallization_meta_label_medium">Medium</dt><dd class="meta-value" data-i18n="life-crystallization_meta_value_medium">Microscopy, salt-crystal cultivation, dormant Artemia eggs</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="life-crystallization_meta_label_dimensions">Dimensions</dt><dd class="meta-value" data-i18n="life-crystallization_meta_value_dimensions">Variable</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="life-crystallization_meta_label_location">Location</dt><dd class="meta-value" data-i18n="life-crystallization_meta_value_location">A high-salt lake in Inner Mongolia, China</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="life-crystallization_meta_label_materials">Materials</dt><dd class="meta-value" data-i18n="life-crystallization_meta_value_materials">Brine shrimp (Artemia), salt crystals, brine, microscope slides</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="life-crystallization_meta_label_edition">Edition</dt><dd class="meta-value" data-i18n="life-crystallization_meta_value_edition">Unique piece + 5 editions</dd></div></dl>
+      <dl class="art-metadata"><div class="meta-row"><dt class="meta-label" data-i18n="life-crystallization_meta_label_year">Year</dt><dd class="meta-value" data-i18n="life-crystallization_meta_value_year">2026</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="life-crystallization_meta_label_medium">Medium</dt><dd class="meta-value" data-i18n="life-crystallization_meta_value_medium">Microscopy, salt-crystal cultivation, dormant Artemia eggs</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="life-crystallization_meta_label_dimensions">Dimensions</dt><dd class="meta-value" data-i18n="life-crystallization_meta_value_dimensions">Variable</dd></div><div class="meta-row"><dt class="meta-label" data-i18n="life-crystallization_meta_label_materials">Materials</dt><dd class="meta-value" data-i18n="life-crystallization_meta_value_materials">Brine shrimp (Artemia), salt crystals, brine, microscope slides</dd></div></dl>
     </section>
 
     <section class="detail-section narrow">
@@ -423,19 +426,15 @@
     "nav_home_back": "← Home",
     "life-crystallization_title": "Life · Crystallization",
     "life-crystallization_subtitle": "A salt lake keeps time in crystals and eggs",
-    "life-crystallization_work_meta": "2024 · Microscopy, salt-crystal cultivation, dormant Artemia eggs",
+    "life-crystallization_work_meta": "2026 · Microscopy, salt-crystal cultivation, dormant Artemia eggs",
     "life-crystallization_meta_label_year": "Year",
-    "life-crystallization_meta_value_year": "2024",
+    "life-crystallization_meta_value_year": "2026",
     "life-crystallization_meta_label_medium": "Medium",
     "life-crystallization_meta_value_medium": "Microscopy, salt-crystal cultivation, dormant Artemia eggs",
     "life-crystallization_meta_label_dimensions": "Dimensions",
     "life-crystallization_meta_value_dimensions": "Variable",
-    "life-crystallization_meta_label_location": "Location",
-    "life-crystallization_meta_value_location": "A high-salt lake in Inner Mongolia, China",
     "life-crystallization_meta_label_materials": "Materials",
     "life-crystallization_meta_value_materials": "Brine shrimp (Artemia), salt crystals, brine, microscope slides",
-    "life-crystallization_meta_label_edition": "Edition",
-    "life-crystallization_meta_value_edition": "Unique piece + 5 editions",
     "life-crystallization_statement": "The lake is a clock without hands. It measures life by evaporation: water leaves, salt stays, and the whole surface slowly tightens into mineral frames. Inside those frames, a creature no larger than a breath completes its entire biography in two or three months—then dissolves, and its next generation sleeps on, packed in salt. I am interested in the tenderness of that bargain: a whole lineage agreeing to pause until water returns.",
     "life-crystallization_process": "Specimens were collected from a high-salt lake and observed under a microscope. The work combines living brine shrimp, salt-crystal growth, and preserved dormant eggs in one visual field—so that a single frame contains birth, mating, death, and suspended rebirth.",
     "life-crystallization_process_label": "Process · Technique",
@@ -491,19 +490,15 @@
     "nav_home_back": "← 首页",
     "life-crystallization_title": "生命·结晶",
     "life-crystallization_subtitle": "一座盐湖，以盐晶与卵封存时间",
-    "life-crystallization_work_meta": "2024 · 显微摄影、盐晶培养、丰年虾耐久卵",
+    "life-crystallization_work_meta": "2026 · 显微摄影、盐晶培养、丰年虾耐久卵",
     "life-crystallization_meta_label_year": "年代",
-    "life-crystallization_meta_value_year": "2024",
+    "life-crystallization_meta_value_year": "2026",
     "life-crystallization_meta_label_medium": "媒材",
     "life-crystallization_meta_value_medium": "显微摄影、盐晶培养、丰年虾耐久卵",
     "life-crystallization_meta_label_dimensions": "尺寸",
     "life-crystallization_meta_value_dimensions": "可变尺寸",
-    "life-crystallization_meta_label_location": "发生地",
-    "life-crystallization_meta_value_location": "中国内蒙古，一处高盐盐湖",
     "life-crystallization_meta_label_materials": "材料",
     "life-crystallization_meta_value_materials": "丰年虾（卤虫）、盐晶、卤水、载玻片",
-    "life-crystallization_meta_label_edition": "版次",
-    "life-crystallization_meta_value_edition": "独版 + 5版",
     "life-crystallization_statement": "这座湖没有指针，却是一座时钟。它以蒸发计量生命：水走了，盐留下，整个湖面渐渐收紧成矿物的画框。画框里，一个微小如呼吸的生命，在两三个月里写完自己的全部传记，然后消融；下一代以盐为被，继续沉睡，等待湖水重来。我被这份契约的温柔击中：一个物种同意暂停，直到水再次归来。",
     "life-crystallization_process": "标本取自一处高盐盐湖，并在显微镜下观察。作品将活的丰年虾、正在生长的盐晶、封存的耐久卵并置在同一个视野中，使单幅画面同时容纳出生、交配、死亡与休眠中的重生。",
     "life-crystallization_process_label": "创作札记 · 技法",
