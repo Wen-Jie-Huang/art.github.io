@@ -228,20 +228,6 @@
     .process-block .process-text { font-size: 0.98rem; color: var(--text-muted); line-height: 1.85;
                                    font-style: italic; }
 
-    .art-nav { margin-top: 6rem; padding: 4rem 6vw; border-top: 1px solid var(--border);
-               display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1.5rem;
-               max-width: 1200px; margin-left: auto; margin-right: auto; }
-    .art-nav a { display: flex; flex-direction: column; gap: 0.3rem; font-family: var(--font-display);
-                 font-size: 1.3rem; color: var(--bg-dark); transition: color 0.3s ease; }
-    .art-nav a:hover { color: var(--coral); }
-    .art-nav a .label { font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.18em;
-                         text-transform: uppercase; color: var(--text-muted); }
-    .art-nav .all-works { grid-column: 2; justify-self: center; font-family: var(--font-body);
-                           font-size: 0.85rem; letter-spacing: 0.18em; text-transform: uppercase;
-                           color: var(--coral); }
-    .art-nav .prev { grid-column: 1; justify-self: start; }
-    .art-nav .next { grid-column: 3; justify-self: end; text-align: right; align-items: flex-end; }
-
     @media (max-width: 900px) {
       .nav-links { display: none; }
       .menu-btn { display: flex; }
@@ -256,9 +242,6 @@
       section { padding: 5rem 5vw; }
       .detail-section { padding: 4rem 5vw; }
       .art-hero { height: 75vh; min-height: 540px; }
-      .art-nav { grid-template-columns: 1fr; justify-items: stretch; gap: 1.2rem; }
-      .art-nav .prev, .art-nav .all-works, .art-nav .next { grid-column: 1; justify-self: start; text-align: left; align-items: flex-start; }
-      .art-nav a { max-width: 100%; }
       .section-text p:first-of-type::first-letter { font-size: 3rem; }
     }
 
@@ -402,12 +385,6 @@
         <figcaption data-i18n="life-crystallization_c9">The whole work rests on this promise: dryness is temporary, return is certain.</figcaption>
       </figure>
     </section>
-
-    <nav class="art-nav">
-      <span></span>
-      <a class="all-works" href="../index.html#artworks" data-i18n="nav_all_works_btn">All works</a>
-      <a class="next" href="../works/algae-jelly.html"><span class="label" data-i18n="nav_next_label">Next →</span><span data-i18n="life-crystallization_next_title">Algae · Jelly</span></a>
-    </nav>
   </main>
   <div class="edit-banner" id="editBanner">
     Local preview · edit <code>content/*.md</code> and run <code>python build.py</code>
@@ -454,10 +431,6 @@
     "life-crystallization_c8": "The final form: a living shrimp suspended inside its own mineral portrait.",
     "life-crystallization_s7": "What I wanted to show is not only a biological cycle but a kind of faith: that water will come back, that life can be folded into mineral and still remain alive, that the end of one generation is only the closed eye of the next.",
     "life-crystallization_c9": "The whole work rests on this promise: dryness is temporary, return is certain.",
-    "nav_prev_label": "← Previous",
-    "nav_next_label": "Next →",
-    "nav_all_works_btn": "All works",
-    "life-crystallization_next_title": "Algae · Jelly",
     "hero_subtitle": "Microalgae · Industry · Art",
     "hero_tagline": "Where microscopic life meets poetic form.",
     "about_label": "About",
@@ -518,10 +491,6 @@
     "life-crystallization_c8": "最终形态：一只活的生命，悬浮在自己的矿物肖像中。",
     "life-crystallization_s7": "我想呈现的不仅是生物循环，更是一种信念：水会回来；生命可以被折叠进矿物，却依然活着；一代的终结，只是下一代合上的眼睛。",
     "life-crystallization_c9": "整件作品倚靠这一承诺：干涸是暂时的，归来是必然的。",
-    "nav_prev_label": "← 前一件",
-    "nav_next_label": "后一件 →",
-    "nav_all_works_btn": "全部作品",
-    "life-crystallization_next_title": "微藻果冻",
     "hero_subtitle": "微藻 · 工业 · 艺术",
     "hero_tagline": "微观生命与诗意形式的交汇之处。",
     "about_label": "关于",

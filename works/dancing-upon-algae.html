@@ -228,20 +228,6 @@
     .process-block .process-text { font-size: 0.98rem; color: var(--text-muted); line-height: 1.85;
                                    font-style: italic; }
 
-    .art-nav { margin-top: 6rem; padding: 4rem 6vw; border-top: 1px solid var(--border);
-               display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1.5rem;
-               max-width: 1200px; margin-left: auto; margin-right: auto; }
-    .art-nav a { display: flex; flex-direction: column; gap: 0.3rem; font-family: var(--font-display);
-                 font-size: 1.3rem; color: var(--bg-dark); transition: color 0.3s ease; }
-    .art-nav a:hover { color: var(--coral); }
-    .art-nav a .label { font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.18em;
-                         text-transform: uppercase; color: var(--text-muted); }
-    .art-nav .all-works { grid-column: 2; justify-self: center; font-family: var(--font-body);
-                           font-size: 0.85rem; letter-spacing: 0.18em; text-transform: uppercase;
-                           color: var(--coral); }
-    .art-nav .prev { grid-column: 1; justify-self: start; }
-    .art-nav .next { grid-column: 3; justify-self: end; text-align: right; align-items: flex-end; }
-
     @media (max-width: 900px) {
       .nav-links { display: none; }
       .menu-btn { display: flex; }
@@ -256,9 +242,6 @@
       section { padding: 5rem 5vw; }
       .detail-section { padding: 4rem 5vw; }
       .art-hero { height: 75vh; min-height: 540px; }
-      .art-nav { grid-template-columns: 1fr; justify-items: stretch; gap: 1.2rem; }
-      .art-nav .prev, .art-nav .all-works, .art-nav .next { grid-column: 1; justify-self: start; text-align: left; align-items: flex-start; }
-      .art-nav a { max-width: 100%; }
       .section-text p:first-of-type::first-letter { font-size: 3rem; }
     }
 
@@ -367,12 +350,6 @@
         <figcaption data-i18n="dancing-upon-algae_c2">Still image: the green field at rest between two vibrations.</figcaption>
       </figure>
     </section>
-
-    <nav class="art-nav">
-      <a class="prev" href="../works/algae-jelly.html"><span class="label" data-i18n="nav_prev_label">← Previous</span><span data-i18n="dancing-upon-algae_prev_title">Algae · Jelly</span></a>
-      <a class="all-works" href="../index.html#artworks" data-i18n="nav_all_works_btn">All works</a>
-      <a class="next" href="../works/algae-words.html"><span class="label" data-i18n="nav_next_label">Next →</span><span data-i18n="dancing-upon-algae_next_title">Algae · Words</span></a>
-    </nav>
   </main>
   <div class="edit-banner" id="editBanner">
     Local preview · edit <code>content/*.md</code> and run <code>python build.py</code>
@@ -411,11 +388,6 @@
     "dancing-upon-algae_v2": "Video: closer view of the green surface rippling under vibration.",
     "dancing-upon-algae_s4": "I think of this as the opposite of documentation. Documentary photography usually steps back to show a process in its entirety. Here I stepped closer, until the process forgot it was being watched and became something else.",
     "dancing-upon-algae_c2": "Still image: the green field at rest between two vibrations.",
-    "nav_prev_label": "← Previous",
-    "nav_next_label": "Next →",
-    "nav_all_works_btn": "All works",
-    "dancing-upon-algae_prev_title": "Algae · Jelly",
-    "dancing-upon-algae_next_title": "Algae · Words",
     "hero_subtitle": "Microalgae · Industry · Art",
     "hero_tagline": "Where microscopic life meets poetic form.",
     "about_label": "About",
@@ -468,11 +440,6 @@
     "dancing-upon-algae_v2": "影像：振动下绿色表面的近景涟漪。",
     "dancing-upon-algae_s4": "我把这视为纪录的反面。纪录摄影通常后退，以展示整个过程。这里我向前靠近，直到过程忘记自己被观看，变成了另一种东西。",
     "dancing-upon-algae_c2": "静态影像：两次振动之间，绿色场域的片刻静止。",
-    "nav_prev_label": "← 前一件",
-    "nav_next_label": "后一件 →",
-    "nav_all_works_btn": "全部作品",
-    "dancing-upon-algae_prev_title": "微藻果冻",
-    "dancing-upon-algae_next_title": "藻·言",
     "hero_subtitle": "微藻 · 工业 · 艺术",
     "hero_tagline": "微观生命与诗意形式的交汇之处。",
     "about_label": "关于",

@@ -228,20 +228,6 @@
     .process-block .process-text { font-size: 0.98rem; color: var(--text-muted); line-height: 1.85;
                                    font-style: italic; }
 
-    .art-nav { margin-top: 6rem; padding: 4rem 6vw; border-top: 1px solid var(--border);
-               display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1.5rem;
-               max-width: 1200px; margin-left: auto; margin-right: auto; }
-    .art-nav a { display: flex; flex-direction: column; gap: 0.3rem; font-family: var(--font-display);
-                 font-size: 1.3rem; color: var(--bg-dark); transition: color 0.3s ease; }
-    .art-nav a:hover { color: var(--coral); }
-    .art-nav a .label { font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.18em;
-                         text-transform: uppercase; color: var(--text-muted); }
-    .art-nav .all-works { grid-column: 2; justify-self: center; font-family: var(--font-body);
-                           font-size: 0.85rem; letter-spacing: 0.18em; text-transform: uppercase;
-                           color: var(--coral); }
-    .art-nav .prev { grid-column: 1; justify-self: start; }
-    .art-nav .next { grid-column: 3; justify-self: end; text-align: right; align-items: flex-end; }
-
     @media (max-width: 900px) {
       .nav-links { display: none; }
       .menu-btn { display: flex; }
@@ -256,9 +242,6 @@
       section { padding: 5rem 5vw; }
       .detail-section { padding: 4rem 5vw; }
       .art-hero { height: 75vh; min-height: 540px; }
-      .art-nav { grid-template-columns: 1fr; justify-items: stretch; gap: 1.2rem; }
-      .art-nav .prev, .art-nav .all-works, .art-nav .next { grid-column: 1; justify-self: start; text-align: left; align-items: flex-start; }
-      .art-nav a { max-width: 100%; }
       .section-text p:first-of-type::first-letter { font-size: 3rem; }
     }
 
@@ -369,12 +352,6 @@
         <figcaption data-i18n="algae-jelly_c5">A drop of the culture on glass: the alga forms its own map before we name it.</figcaption>
       </figure>
     </section>
-
-    <nav class="art-nav">
-      <a class="prev" href="../works/life-crystallization.html"><span class="label" data-i18n="nav_prev_label">← Previous</span><span data-i18n="algae-jelly_prev_title">Life · Crystallization</span></a>
-      <a class="all-works" href="../index.html#artworks" data-i18n="nav_all_works_btn">All works</a>
-      <a class="next" href="../works/dancing-upon-algae.html"><span class="label" data-i18n="nav_next_label">Next →</span><span data-i18n="algae-jelly_next_title">Dancing upon Algae</span></a>
-    </nav>
   </main>
   <div class="edit-banner" id="editBanner">
     Local preview · edit <code>content/*.md</code> and run <code>python build.py</code>
@@ -414,11 +391,6 @@
     "algae-jelly_c4": "The green band thickens over days, a living sediment that refuses to sink.",
     "algae-jelly_s4": "We will sequence it eventually. A name will arrive. But I hope the work keeps some of this namelessness, because the namelessness is also a kind of honesty. We do not know everything that lives in our lakes, and the lakes do not owe us a list.",
     "algae-jelly_c5": "A drop of the culture on glass: the alga forms its own map before we name it.",
-    "nav_prev_label": "← Previous",
-    "nav_next_label": "Next →",
-    "nav_all_works_btn": "All works",
-    "algae-jelly_prev_title": "Life · Crystallization",
-    "algae-jelly_next_title": "Dancing upon Algae",
     "hero_subtitle": "Microalgae · Industry · Art",
     "hero_tagline": "Where microscopic life meets poetic form.",
     "about_label": "About",
@@ -472,11 +444,6 @@
     "algae-jelly_c4": "绿色带日渐变浓，一种拒绝下沉的活沉积。",
     "algae-jelly_s4": "我们终将为它测序。名字会到来。但我希望作品保留一些无名状态，因为无名本身也是一种诚实。我们并不知晓湖泊中所有生命，湖泊也不欠我们一份清单。",
     "algae-jelly_c5": "一滴培养物在玻璃上形成自己的地图，早于我们为它的命名。",
-    "nav_prev_label": "← 前一件",
-    "nav_next_label": "后一件 →",
-    "nav_all_works_btn": "全部作品",
-    "algae-jelly_prev_title": "生命·结晶",
-    "algae-jelly_next_title": "跃然藻上",
     "hero_subtitle": "微藻 · 工业 · 艺术",
     "hero_tagline": "微观生命与诗意形式的交汇之处。",
     "about_label": "关于",

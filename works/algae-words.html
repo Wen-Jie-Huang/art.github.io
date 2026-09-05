@@ -228,20 +228,6 @@
     .process-block .process-text { font-size: 0.98rem; color: var(--text-muted); line-height: 1.85;
                                    font-style: italic; }
 
-    .art-nav { margin-top: 6rem; padding: 4rem 6vw; border-top: 1px solid var(--border);
-               display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1.5rem;
-               max-width: 1200px; margin-left: auto; margin-right: auto; }
-    .art-nav a { display: flex; flex-direction: column; gap: 0.3rem; font-family: var(--font-display);
-                 font-size: 1.3rem; color: var(--bg-dark); transition: color 0.3s ease; }
-    .art-nav a:hover { color: var(--coral); }
-    .art-nav a .label { font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.18em;
-                         text-transform: uppercase; color: var(--text-muted); }
-    .art-nav .all-works { grid-column: 2; justify-self: center; font-family: var(--font-body);
-                           font-size: 0.85rem; letter-spacing: 0.18em; text-transform: uppercase;
-                           color: var(--coral); }
-    .art-nav .prev { grid-column: 1; justify-self: start; }
-    .art-nav .next { grid-column: 3; justify-self: end; text-align: right; align-items: flex-end; }
-
     @media (max-width: 900px) {
       .nav-links { display: none; }
       .menu-btn { display: flex; }
@@ -256,9 +242,6 @@
       section { padding: 5rem 5vw; }
       .detail-section { padding: 4rem 5vw; }
       .art-hero { height: 75vh; min-height: 540px; }
-      .art-nav { grid-template-columns: 1fr; justify-items: stretch; gap: 1.2rem; }
-      .art-nav .prev, .art-nav .all-works, .art-nav .next { grid-column: 1; justify-self: start; text-align: left; align-items: flex-start; }
-      .art-nav a { max-width: 100%; }
       .section-text p:first-of-type::first-letter { font-size: 3rem; }
     }
 
@@ -455,11 +438,6 @@
         </figure>
       </div>
     </section>
-
-    <nav class="art-nav">
-      <a class="prev" href="../works/dancing-upon-algae.html"><span class="label" data-i18n="nav_prev_label">← Previous</span><span data-i18n="algae-words_prev_title">Dancing upon Algae</span></a>
-      <a class="all-works" href="../index.html#artworks" data-i18n="nav_all_works_btn">All works</a>
-    </nav>
   </main>
   <div class="edit-banner" id="editBanner">
     Local preview · edit <code>content/*.md</code> and run <code>python build.py</code>
@@ -517,10 +495,6 @@
     "algae-words_c15": "The dish from above: a page of green text on yellow paper.",
     "algae-words_c16": "Detail of density: where the algae crowded, the word becomes dark.",
     "algae-words_c17": "Final state before documentation: the word has settled, but not stopped.",
-    "nav_prev_label": "← Previous",
-    "nav_next_label": "Next →",
-    "nav_all_works_btn": "All works",
-    "algae-words_prev_title": "Dancing upon Algae",
     "hero_subtitle": "Microalgae · Industry · Art",
     "hero_tagline": "Where microscopic life meets poetic form.",
     "about_label": "About",
@@ -592,10 +566,6 @@
     "algae-words_c15": "俯瞰培养皿：黄纸上的绿色文字。",
     "algae-words_c16": "密度细节：藻聚集处，字变深。",
     "algae-words_c17": "记录前的最终状态：字已安定，但未停止。",
-    "nav_prev_label": "← 前一件",
-    "nav_next_label": "后一件 →",
-    "nav_all_works_btn": "全部作品",
-    "algae-words_prev_title": "跃然藻上",
     "hero_subtitle": "微藻 · 工业 · 艺术",
     "hero_tagline": "微观生命与诗意形式的交汇之处。",
     "about_label": "关于",
